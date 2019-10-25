@@ -67,6 +67,92 @@ public class DSSP {
             
         }
     }
+    public void add1SP(){
+        Scanner sc =new Scanner(System.in);
+        SanPham sp =new SanPham();
+        sp.nhapSP();
+        SanPham temp=new SanPham();
+            for ( int j=0;j<listSP.size();j++) {                    
+                     temp=listSP.get(j);
+                    if(sp.getMaSP().equals(temp.getMaSP()))//==temp.maNV
+                    {
+                        System.out.println("\n !!!!!! WRONG!!: bạn đã nhập trùng mã sản phẩm,mời nhập lại  !!!!!! ");
+                        //break;
+                        sc.nextLine();
+                        String mamoi;                        
+                        System.out.print("\n nhập mã mới cho sản phẩm:");
+                        mamoi=sc.nextLine();
+                        sp.setMaSP(mamoi);
+                        j=-1;
+                    }
+                } 
+            listSP.add(sp);
+    }
+    public void SuaInforSP(){
+        Scanner sc =new Scanner(System.in);              
+        String maTim="";
+        int index = -1;       
+        System.out.print("\n Nhập mã của  sản phẩm muốn sửa:");
+        maTim=sc.nextLine();        
+        for (SanPham x : listSP) {
+            if(maTim.equals(x.maSP))//if(x.maNV==maTim)
+            {
+                index=listSP.indexOf(x);
+                break;
+            }
+        }
+        if(index==-1)
+            System.out.print("\ntrong danh sách không có mã sản phẩm muốn sửa thông tin.");
+        else
+        {
+            SanPham temp=listSP.get(index);
+            System.out.print("\n bạn muốn sửa thông tin gì, mời lựa chọn:");
+            System.out.print("\n1.Số lượng; 2.Đơn giá bán; 3.size; 4.Chất liệu vải");
+             //sc.nextLine();
+            int luachon=-1;
+            System.out.print("\nvui lòng nhập lựa chọn:");
+            luachon=sc.nextInt();
+           sc.nextLine();
+            switch(luachon)
+            {
+                case 1:{
+                    int sl;//số lượng
+                    System.out.print("\n nhập số lượng mới cho sản phẩm \""+temp.tenSP+"\":");
+                    sl=sc.nextInt();
+                    sc.nextLine();
+                    temp.SoLuong=sl;
+                    listSP.set(index, temp);
+                };break;
+                case 2:{
+                    double dgb;//đơn giá bán
+                    System.out.print("\n nhập đơn giá bán mới cho sản phẩm \""+temp.tenSP+"\":");
+                    dgb=sc.nextDouble();
+                    sc.nextLine();
+                    temp.DonGiaBan=dgb;
+                    listSP.set(index, temp);
+                };break;
+                case 3:{
+                    int kt;//kích thước
+                    System.out.print("\n nhập size mới cho sản phẩm \""+temp.tenSP+"\":");
+                    kt=sc.nextInt();
+                    sc.nextLine();
+                    temp.Size=kt;
+                    listSP.set(index, temp);
+                    
+                };break;
+                case 4:{
+                    String clv;//chất liệu vải
+                    System.out.print("\n nhập chất liệu vải mới cho sản phẩm \""+temp.tenSP+"\":");
+                    clv=sc.nextLine();
+                    //sc.nextLine();
+                    temp.ChatLieuVai=clv;
+                    listSP.set(index, temp);
+                };break;
+                default:System.out.println("bạn đã không lựa chọn mục để sửa nên thông "
+                        + "tin của sản phẩm:\""+temp.tenSP+"\" sẽ giữ nguyên");
+            } 
+        } 
+    }
     public void ghiFile(String filename) throws FileNotFoundException, IOException{
 //          
             
@@ -84,4 +170,8 @@ public class DSSP {
             obin.close();fin.close();
             
         }
+
+    public int countElement() {
+        return listSP.size();
+    }
 }

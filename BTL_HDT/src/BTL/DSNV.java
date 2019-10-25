@@ -170,7 +170,7 @@ public class DSNV {
                 case 3:{
                     long dienthoai;
                     System.out.print("\n nhập số điện thoại mới cho nhân viên \""+temp.tenNV+"\":");
-                    dienthoai=sc.nextInt();
+                    dienthoai=sc.nextLong();
                     sc.nextLine();
                     temp.dt=dienthoai;
                     listNV.set(index, temp);
@@ -216,4 +216,8 @@ public class DSNV {
             obin.close();fin.close();
             
         }
+
+    public int countElement() {
+        return listNV.size();
+    }
 }

@@ -73,4 +73,7 @@ public class DSKH {//implements Serializable
             obin.close();fin.close();
            
         }
+        public int countElement(){
+            return listkh.size();
+        }
 }

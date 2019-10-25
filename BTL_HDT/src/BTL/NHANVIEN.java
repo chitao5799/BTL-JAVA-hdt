@@ -108,21 +108,35 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
     }
     public void nhap(){
         Scanner sc=new Scanner(System.in);        
-//       
-        System.out.print("\n nhập mã nhân viên:");
-        maNV=sc.nextLine();
-        System.out.print("\n nhập tên nhân viên:");
-        tenNV=sc.nextLine();
-        System.out.print("\n nhập địa chỉ của nhân viên:");
+        do {            
+            System.out.print("\n Nhập mã nhân viên:");
+            maNV=sc.nextLine();
+            if(maNV.isEmpty())
+                System.out.print("\n!!! mã nhân viên không được để trống.!!!");
+        } while (maNV.isEmpty());
+        do {            
+            System.out.print("\n Nhập tên nhân viên:");
+             tenNV=sc.nextLine();
+            if(tenNV.isEmpty())
+                System.out.print("\n!!! Tên nhân viên không được để trống.!!!");
+        } while (tenNV.isEmpty());
+        
+        System.out.print("\n Nhập địa chỉ của nhân viên:");
         diaChi=sc.nextLine();
-        System.out.print("\n nhập giới tính cho nhân viên:");
+        System.out.print("\n Nhập giới tính cho nhân viên:");
         gt=sc.nextLine();
-        System.out.print("\n nhập chức vụ nhân viên:");
+        System.out.print("\n Nhập chức vụ nhân viên:");
         chucVu=sc.nextLine();
-        System.out.print("\n nhập điện thoại nhân viên:");
+        System.out.print("\n Nhập điện thoại nhân viên:");
         dt=sc.nextLong();
-        System.out.print("\n nhập lương nhân viên(. not ,):");
-        luong=sc.nextFloat();
+        do{
+            System.out.print("\n Nhập lương nhân viên(. not ,):");
+            luong=sc.nextFloat();
+            if (luong<=0) {
+                System.out.print("\n !!!Lương phải lớn hơn 0.!!!");
+            }
+        }while(luong<=0);
+        sc.nextLine();
 //        int day,month,year;
 //        do {            
 //            System.out.print("\n nhập ngày sinh nhân viên:");
@@ -137,28 +151,69 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
 //        year=sc.nextInt();
 //        ngaySinh=new Date(year, month, day);
         
-        sc.nextLine();
         String day;
         String[] arrday=new String[3];
+        int  NgayThangNam=-1;//lưu trữ giá trị kiểm tra tính hợp lệ ngày nhập ,=1 thì nhập đúng ngày.
         do{
-        System.out.print("\n nhập ngày sinh (dd/mm/yyyy:)");
-        day=sc.nextLine();
-         arrday=day.split("/");
-        if(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1)
-             System.out.print("\n !!!!!! ngày tháng không chính xác. !!!!!! ");
-        else if(Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12)
-         System.out.print("\n  !!!!!! ngày tháng không chính xác. !!!!!! ");
-        else if(Integer.valueOf(arrday[2])<0)
-             System.out.print("\n !!!!!!  ngày tháng không chính xác. !!!!!! ");
-        }while(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1||
-                Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12||
-                Integer.valueOf(arrday[2])<0);
+            do{
+                System.out.print("\n nhập ngày bán (dd/mm/yyyy:)");
+                day=sc.nextLine();
+                if(day.split("/").length!=3)
+                System.out.print("\n!!!!Bạn đã nhập ngày tháng sai !!!!."); 
+            }while( day.split("/").length!=3);         
+            arrday=day.split("/");
+//         if(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1)
+//             System.out.print("\n !!!!!! ngày tháng không chính xác. !!!!!! ");
+//        else if(Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12)
+//                System.out.print("\n  !!!!!! ngày tháng không chính xác. !!!!!! ");
+//        else if(Integer.valueOf(arrday[2])<=0)
+//             System.out.print("\n !!!!!!  ngày tháng không chính xác. !!!!!! ");
+          //  NgayThangNam=NgayHopLe(Integer.valueOf(arrday[0]), Integer.valueOf(arrday[1]), Integer.valueOf(arrday[2]));
+           //  * //thay thế cho 2 hàm NanNhuan và NgayHopLe
+            int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+            if(Integer.valueOf(arrday[1]) <= 0 || Integer.valueOf(arrday[1]) > 12)
+              NgayThangNam= -1;
+            else {
+                  if((((Integer.valueOf(arrday[2]) % 4 == 0) && (Integer.valueOf(arrday[2]) % 100 != 0)) || (Integer.valueOf(arrday[2]) % 400 == 0)))
+                    ngayTrongThang[1]++;
+                  if(Integer.valueOf(arrday[2])<=0)
+                       NgayThangNam= -1;
+                  else  if((Integer.valueOf(arrday[0]) > 0 && Integer.valueOf(arrday[0]) <= ngayTrongThang[Integer.valueOf(arrday[1]) - 1]))
+                       NgayThangNam=1;
+                        else NgayThangNam=-1;
+            }
+           // * // 
+            if(NgayThangNam==-1)
+                System.out.print("\n  !!!!!! ngày tháng năm không chính xác. !!!!!! ");
+        }while(NgayThangNam==-1);
+//            while(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1||
+//                Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12||
+//                Integer.valueOf(arrday[2])<=0 ); 
         ngaySinh=new Date(Integer.valueOf(arrday[2]),Integer.valueOf(arrday[1]),
                 Integer.valueOf(arrday[0]));
-        
        // sc.nextLine();
         
     }
+    /* //hai hàm này gây ra bị lỗi khi đọc file, vẫn không hiểu tại sao.
+    public boolean NamNhuan(int year)
+    {
+         return(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
+    }
+
+    public boolean NgayHopLe(int ngay, int thang,int nam)
+    {
+         int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+         if(thang <= 0 || thang > 12)
+              return false;
+
+         //Năm nhuận tháng 2 29 ngày:
+         if(NamNhuan(nam))
+              ngayTrongThang[1]++;
+         if(nam<=0)
+             return false;
+
+         return (ngay > 0 && ngay <= ngayTrongThang[thang - 1]);
+    } */
     public void Xuat(){
         System.out.printf("%-10s%-20s%-25s%-8s%-20s%-15d%-15.3f%-2d/%-2d/%-4d\n",
                 maNV,tenNV,diaChi,gt,chucVu,dt,luong,ngaySinh.getDate(),

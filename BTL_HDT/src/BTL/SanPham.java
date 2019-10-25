@@ -88,10 +88,19 @@ public class SanPham implements Serializable{
     }
     public void nhapSP(){
         Scanner sc =new Scanner(System.in);
-        System.out.print("\n nhập mã sản phẩm:");
-        maSP =sc.nextLine();
-        System.out.print("\n nhập tên sản phẩm:");
-        tenSP =sc.nextLine();
+        do {            
+            System.out.print("\n nhập mã sản phẩm:");
+            maSP =sc.nextLine();
+            if(maSP.isEmpty())
+                System.out.print("\n!!!mã sản không được để trống.!!");
+        } while (maSP.isEmpty());
+        do {            
+            System.out.print("\n nhập tên sản phẩm:");
+            tenSP =sc.nextLine();
+            if(tenSP.isEmpty())
+                System.out.print("\n!!! Tên sản phẩm không được để trống.!!!");
+        } while (tenSP.isEmpty());
+        
         System.out.print("\n nhập chất liệu vải:");
         ChatLieuVai =sc.nextLine();
         do{

@@ -66,10 +66,19 @@ public class KHACHHANG implements Serializable{
     }
     public  void nhap(){
         Scanner sc=new Scanner(System.in);
-        System.out.print("\n nhập mã khách hàng:");
-        maKH=sc.nextLine();
-        System.out.print("\n nhập tên khách hàng:");
-        tenKH=sc.nextLine();
+        do {            
+            System.out.print("\n nhập mã khách hàng:");
+            maKH=sc.nextLine();
+            if(maKH.isEmpty())
+                System.out.print("\n!!! mã khách hàng không được để trống.!!!");
+        } while (maKH.isEmpty());
+        do {            
+            System.out.print("\n nhập tên khách hàng:");
+            tenKH=sc.nextLine();
+            if(tenKH.isEmpty())
+                System.out.print("\n!!!tên khách hàng không được để trống. !!!!");
+        } while (tenKH.isEmpty());
+        
         System.out.print("\n nhập địa chỉ khách hàng:");
         diaChi=sc.nextLine();
         System.out.print("\n nhập số điện thoại khách hàng:");
