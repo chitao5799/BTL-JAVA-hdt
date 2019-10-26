@@ -20,20 +20,20 @@ import java.util.Scanner;
  *
  * @author NCT99
  */
-public class DSKH {//implements Serializable
-    ArrayList<KHACHHANG> listkh=new ArrayList<>();
+public class DSKH extends DocGhiFile<KHACHHANG>{//implements Serializable
+   // ArrayList<KHACHHANG> listDT=new ArrayList<>();
     public void NhapDSKH(){
         int i,n;
         Scanner sc =new Scanner(System.in);
         System.out.print("\n nhập số lượng khách hàng:");
         n=sc.nextInt();
-       // listkh;
+       // listDT;
         for(i=0;i<n;i++){
             KHACHHANG khachhang=new KHACHHANG();
             khachhang.nhap();
             KHACHHANG temp=new KHACHHANG();
-            for ( int j=0;j<listkh.size();j++) {                    
-                     temp=listkh.get(j);
+            for ( int j=0;j<listDT.size();j++) {                    
+                     temp=listDT.get(j);
                     if(khachhang.getMaKH().equals(temp.getMaKH()))//==temp.maNV
                     {
                         System.out.println("\nWRONG!!: bạn đã nhập trùng mã khách hàng,mời nhập lại");
@@ -46,34 +46,34 @@ public class DSKH {//implements Serializable
                         j=-1;
                     }
                 } 
-            listkh.add(khachhang);
+            listDT.add(khachhang);
         }
     }
         public void XuatDSKH(){
             System.out.print("\ndanh sách khách hàng:");
             System.out.printf("\n%-10s%-20s%-25s%-15s","mã KH","tên KH","địa chỉ","số đt");
-            for (KHACHHANG x : listkh) {
+            for (KHACHHANG x : listDT) {
                 x.xuat();
             }
         }
-        public void ghiFile(String filename) throws FileNotFoundException, IOException{
-//          
-            
-             FileOutputStream fout = new FileOutputStream(filename);
-            ObjectOutputStream out =new ObjectOutputStream(fout);
-            out.writeObject(listkh);
-            out.close();
-            fout.close();
-        
-        }
-        public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-            FileInputStream fin =new FileInputStream(filename);
-            ObjectInputStream obin =new ObjectInputStream(fin);
-            listkh=(ArrayList)obin.readObject();
-            obin.close();fin.close();
-           
-        }
+//        public void ghiFile(String filename) throws FileNotFoundException, IOException{
+////          
+//            
+//             FileOutputStream fout = new FileOutputStream(filename);
+//            ObjectOutputStream out =new ObjectOutputStream(fout);
+//            out.writeObject(listDT);
+//            out.close();
+//            fout.close();
+//        
+//        }
+//        public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
+//            FileInputStream fin =new FileInputStream(filename);
+//            ObjectInputStream obin =new ObjectInputStream(fin);
+//            listDT=(ArrayList)obin.readObject();
+//            obin.close();fin.close();
+//           
+//        }
         public int countElement(){
-            return listkh.size();
+            return listDT.size();
         }
 }

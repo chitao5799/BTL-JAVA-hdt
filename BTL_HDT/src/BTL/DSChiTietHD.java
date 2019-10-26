@@ -18,8 +18,8 @@ import java.util.Scanner;
  *
  * @author NCT99
  */
-public class DSChiTietHD {
-    ArrayList<ChiTietHoaDon> listCTHD=new ArrayList<>();
+public class DSChiTietHD extends DocGhiFile<ChiTietHoaDon>{
+  //  ArrayList<ChiTietHoaDon> listDT=new ArrayList<>();
     public void nhap(DSHD dshd,DSSP dssp){
         int soLuongHD;
         Scanner sc =new Scanner(System.in);
@@ -30,8 +30,8 @@ public class DSChiTietHD {
             cthd.nhapCTHD(dssp, dshd);
             int dung=1; //=1 là nhập đúng dữ liệu.
             ChiTietHoaDon temporery=new ChiTietHoaDon();
-            for (int j = 0; j < listCTHD.size(); j++) {
-                    temporery=listCTHD.get(j);
+            for (int j = 0; j < listDT.size(); j++) {
+                    temporery=listDT.get(j);
                     if(temporery.getMaSP().equals(cthd.getMaSP()) && temporery.getMaHD().equals(cthd.getMaHD()))
                         {
                             System.out.print("\n!!!Wrong. Bạn đã nhập trùng mã hóa đơn và mã sản phẩm 2 lần.!!!");
@@ -40,39 +40,39 @@ public class DSChiTietHD {
                         }
                 }
             if(dung==1)
-             listCTHD.add(cthd);
+             listDT.add(cthd);
         }
     }
     public void xuat(){
         System.out.print("\nDanh sách chi tiết hóa đơn.");
         System.out.format("\n%-10s%-10s%-10s%-10s%-15s","Mã HD","Mã SP","số lượng","giảm giá","thành tiền");
-        for (ChiTietHoaDon xChiTietHoaDon : listCTHD) {
+        for (ChiTietHoaDon xChiTietHoaDon : listDT) {
             xChiTietHoaDon.xuat();
         }
     }
-     public void ghiFile(String filename) throws FileNotFoundException, IOException{
-  
-             FileOutputStream fout = new FileOutputStream(filename);
-            ObjectOutputStream out =new ObjectOutputStream(fout);
-            out.writeObject(listCTHD);
-            out.close();
-            fout.close();
-        
-        }
-    public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-            FileInputStream fin =new FileInputStream(filename);
-            ObjectInputStream obin =new ObjectInputStream(fin);
-            listCTHD=(ArrayList)obin.readObject();
-            obin.close();fin.close();
-           
-    }
+//     public void ghiFile(String filename) throws FileNotFoundException, IOException{
+//  
+//             FileOutputStream fout = new FileOutputStream(filename);
+//            ObjectOutputStream out =new ObjectOutputStream(fout);
+//            out.writeObject(listDT);
+//            out.close();
+//            fout.close();
+//        
+//        }
+//    public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
+//            FileInputStream fin =new FileInputStream(filename);
+//            ObjectInputStream obin =new ObjectInputStream(fin);
+//            listDT=(ArrayList)obin.readObject();
+//            obin.close();fin.close();
+//           
+//    }
     public void add1CTHD(DSHD dshd,DSSP dssp){
         ChiTietHoaDon cthd=new ChiTietHoaDon();
             cthd.nhapCTHD(dssp, dshd);
             int dung=1; //=1 là nhập đúng dữ liệu.
             ChiTietHoaDon temporery=new ChiTietHoaDon();
-            for (int j = 0; j < listCTHD.size(); j++) {
-                    temporery=listCTHD.get(j);
+            for (int j = 0; j < listDT.size(); j++) {
+                    temporery=listDT.get(j);
                     if(temporery.getMaSP().equals(cthd.getMaSP()) && temporery.getMaHD().equals(cthd.getMaHD()))
                         {
                             System.out.print("\n!!!Wrong. Bạn đã nhập trùng mã hóa đơn và mã sản phẩm 2 lần.!!!");
@@ -81,9 +81,9 @@ public class DSChiTietHD {
                         }
                 }
             if(dung==1)
-             listCTHD.add(cthd);
+             listDT.add(cthd);
     }
     public int countElement() {
-        return listCTHD.size();
+        return listDT.size();
     }
 }

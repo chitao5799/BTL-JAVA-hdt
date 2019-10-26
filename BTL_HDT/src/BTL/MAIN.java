@@ -106,7 +106,7 @@ public class MAIN {
                 };break;
                 case 5:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -114,7 +114,7 @@ public class MAIN {
                 };break;
                 case 6:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -123,7 +123,7 @@ public class MAIN {
                 };break;
                 case 7:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -141,13 +141,13 @@ public class MAIN {
                                 if (!temp.isEmpty()) {
                                     filename=temp;
                                 }
-                                listNVdocfile.ghiFile(filename);
+                              listNVdocfile.ghiFile(filename);
                             }
                         }
                 };break;
                 case 8:{
                     sc.nextLine();
-                   if(listNVdocfile.listNV.isEmpty())
+                   if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -172,7 +172,7 @@ public class MAIN {
                 };break;
                 case 9:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -184,7 +184,7 @@ public class MAIN {
                 };break;
                 case 10:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -196,7 +196,7 @@ public class MAIN {
                 };break;
                 case 11:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -208,7 +208,7 @@ public class MAIN {
                 };break;
                 case 12:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -218,7 +218,7 @@ public class MAIN {
                 };break;
                 case 13:{
                     sc.nextLine();
-                    if(listNVdocfile.listNV.isEmpty())
+                    if(listNVdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -237,7 +237,7 @@ public class MAIN {
                                 if (!temp.isEmpty()) {
                                     filename=temp;
                                 }
-                                listNVdocfile.ghiFile(filename);
+                               listNVdocfile.ghiFile(filename);
                             }
                     }
                 };break;
@@ -248,21 +248,21 @@ public class MAIN {
     static void XuLyKhachHang(DSKH listKHdocfile) throws IOException, FileNotFoundException, ClassNotFoundException{
         Scanner sc =new Scanner(System.in);
         int LuaChonKhachHang=-1;
-        DSKH listkh= new DSKH();
+        DSKH listDT= new DSKH();
         do{            
             menuKH();
             System.out.print("\n Mời bạn nhập lựa chọn:");
             LuaChonKhachHang=sc.nextInt();           
             switch(LuaChonKhachHang){
                 case 1:{
-                    listkh.NhapDSKH();
+                    listDT.NhapDSKH();
                 };break;
                 case 2:{
-                    listkh.XuatDSKH();
+                    listDT.XuatDSKH();
                 };break;
                 case 3:{
                     sc.nextLine();
-                    if(listkh.countElement()<=0)
+                    if(listDT.countElement()<=0)
                     { System.out.print("\n!!!Danh sách hiện tại rỗng, không thể ghi file.!!!");sc.nextLine();}
                     else{
                         String filename="khachhang.dat",temp;                   
@@ -271,7 +271,7 @@ public class MAIN {
                         if (!temp.isEmpty()) {
                             filename=temp;
                         }                                     
-                        listkh.ghiFile(filename);
+                        listDT.ghiFile(filename);
                     }
                 };break;
                 case 4:{
@@ -336,7 +336,7 @@ public class MAIN {
                 };break; 
                 case 5:{
                     sc.nextLine();
-                    if(listSPdocfile.listSP.isEmpty())
+                    if(listSPdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file sản phẩm chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -348,7 +348,7 @@ public class MAIN {
                 };break;
                 case 7:{
                     sc.nextLine();
-                   if(listSPdocfile.listSP.isEmpty())
+                   if(listSPdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file sản phẩm chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -373,7 +373,7 @@ public class MAIN {
                 };break;
                 case 8:{
                     sc.nextLine();
-                    if(listSPdocfile.listSP.isEmpty())
+                    if(listSPdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file sản phẩm chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -402,29 +402,29 @@ public class MAIN {
     static void XuLyHoaDon(DSNV listNVdocfile, DSKH listKHdocfile,DSHD listHDdocfile) throws IOException, FileNotFoundException, ClassNotFoundException{
         Scanner sc =new Scanner(System.in);
         int LuaChonHoaDon=-1;
-        DSHD listhd= new DSHD();
+        DSHD listDT= new DSHD();
         do{            
             menuHD();
             System.out.print("\n Mời bạn nhập lựa chọn:");
             LuaChonHoaDon=sc.nextInt();           
             switch(LuaChonHoaDon){
                 case 1:{
-                    if(listKHdocfile.listkh.isEmpty()){
+                    if(listKHdocfile.listDT.isEmpty()){
                         System.out.print("\n!!!! file khách hàng chưa được đọc,đọc file để có dữ liệu so sánh khi nhập hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
-                    else if(listNVdocfile.listNV.isEmpty()){   
+                    else if(listNVdocfile.listDT.isEmpty()){   
                         System.out.print("\n!!!! file nhân viên chưa được đọc,đọc file để có dữ liệu so sánh khi nhập hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
-                    else listhd.nhapDSHD(listKHdocfile, listNVdocfile);
+                    else listDT.nhapDSHD(listKHdocfile, listNVdocfile);
                 };break;
                 case 2:{
-                    listhd.xuatDSHD();
+                    listDT.xuatDSHD();
                 };break;
                 case 3:{
                     sc.nextLine();
-                     if(listhd.countElement()<=0)
+                     if(listDT.countElement()<=0)
                     { System.out.print("\n!!!Danh sách hiện tại rỗng, không thể ghi file.!!!");sc.nextLine();}
                     else{
                         String filename="hoadonban.dat",temp;
@@ -433,7 +433,7 @@ public class MAIN {
                         if (!temp.isEmpty()) {
                             filename=temp;
                         }
-                        listhd.ghiFile(filename);
+                        listDT.ghiFile(filename);
                      }
                 };break;
                 case 4:{
@@ -452,15 +452,15 @@ public class MAIN {
                 };break;
                 case 5:{
                    sc.nextLine();
-                   if(listKHdocfile.listkh.isEmpty()){
+                   if(listKHdocfile.listDT.isEmpty()){
                         System.out.print("\n!!!! file khách hàng chưa được đọc,đọc file để có dữ liệu so sánh khi nhập hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
-                    else if(listNVdocfile.listNV.isEmpty()){   
+                    else if(listNVdocfile.listDT.isEmpty()){   
                         System.out.print("\n!!!! file nhân viên chưa được đọc,đọc file để có dữ liệu so sánh khi nhập hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
-                    else if(listHDdocfile.listhd.isEmpty())
+                    else if(listHDdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file hóa đơn chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -499,11 +499,11 @@ public class MAIN {
             LuaChonCTHoaDon=sc.nextInt();           
             switch(LuaChonCTHoaDon){
                 case 1:{
-                    if(listHDdocfile.listhd.isEmpty()){
+                    if(listHDdocfile.listDT.isEmpty()){
                         System.out.print("\n!!!! file hóa đơn chưa được đọc,đọc file để có dữ liệu so sánh khi nhập chi tiết hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
-                    else if(listSPdocfile.listSP.isEmpty()){   
+                    else if(listSPdocfile.listDT.isEmpty()){   
                         System.out.print("\n!!!! file sản phẩm chưa được đọc,đọc file để có dữ liệu so sánh khi nhập chi tiết hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
@@ -558,15 +558,15 @@ public class MAIN {
                 };break;
                 case 5:{
                     sc.nextLine();
-                    if(listHDdocfile.listhd.isEmpty()){
+                    if(listHDdocfile.listDT.isEmpty()){
                         System.out.print("\n!!!! file hóa đơn chưa được đọc,đọc file để có dữ liệu so sánh khi nhập chi tiết hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
-                    else if(listSPdocfile.listSP.isEmpty()){   
+                    else if(listSPdocfile.listDT.isEmpty()){   
                         System.out.print("\n!!!! file sản phẩm chưa được đọc,đọc file để có dữ liệu so sánh khi nhập chi tiết hóa đơn.!!");
                         sc.nextLine();sc.nextLine();
                         }
-                    else if(listCTHDdocfile.listCTHD.isEmpty())
+                    else if(listCTHDdocfile.listDT.isEmpty())
                     { 
                         System.out.print("\n !!!!!! file chi tiết hóa đơn chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
                         sc.nextLine();sc.nextLine();
@@ -793,7 +793,7 @@ public class MAIN {
         System.out.print("\ndanh sách đọc từ file.\n");
         DSKH dskh =new DSKH();
         ArrayList<KHACHHANG> lsArrayList=ds.docfile();
-        dskh.listkh=lsArrayList;
+        dskh.listDT=lsArrayList;
         dskh.XuatDSKH();
         ///*****============
 //        DSSP dssp=new DSSP();

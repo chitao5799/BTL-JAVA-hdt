@@ -76,7 +76,7 @@ public class HoaDonBan implements Serializable{
         do{
             System.out.print("\n Nhập mã nhân viên:");
              maNV=sc.nextLine();
-             for (NHANVIEN temp : dsnv.listNV) {
+             for (NHANVIEN temp : dsnv.listDT) {
                 if(maNV.equals(temp.maNV))
                 {
                     coNV=1;
@@ -90,7 +90,7 @@ public class HoaDonBan implements Serializable{
         do{
             System.out.print("\n Nhập mã khách hàng:");
              maKH=sc.nextLine();
-             for (KHACHHANG temp : dskh.listkh) {
+             for (KHACHHANG temp : dskh.listDT) {
                 if(maKH.equals(temp.getMaKH()))
                 {
                     coKh=1;
@@ -106,7 +106,7 @@ public class HoaDonBan implements Serializable{
          
         do{
             do{
-                System.out.print("\n nhập ngày bán (dd/mm/yyyy:)");
+                System.out.print("\n nhập ngày bán (dd/mm/yyyy):");
                 day=sc.nextLine();
                 if(day.split("/").length!=3)
                 System.out.print("\n!!!!Bạn đã nhập ngày tháng sai !!!!."); 

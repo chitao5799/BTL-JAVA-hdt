@@ -72,7 +72,7 @@ public class ChiTietHoaDon  implements Serializable
         do{
             System.out.print("\n Nhập mã hóa đơn bán:");
             maHD=sc.nextLine();
-            for (HoaDonBan x : dshd.listhd) {
+            for (HoaDonBan x : dshd.listDT) {
                 if(maHD.equals(x.maHD))
                 {
                     coHD=1;
@@ -87,17 +87,17 @@ public class ChiTietHoaDon  implements Serializable
         do {            
             System.out.print("\n Nhập mã sản phẩm:");
             maSP=sc.nextLine();
-            for (SanPham x : dssp.listSP) {
-                if(maSP.equals(x.maSP))
+            for (SanPham x : dssp.listDT) {
+                if(maSP.equals(x.getMaSP()))
                 {
                     coSP=1;
-                    if(x.SoLuong<=0)
+                    if(x.getSoLuong()<=0)
                         {
                            coSP=-2;
                            break;
                         }
                     temp=x;
-                    indexSP=dssp.listSP.indexOf(x);
+                    indexSP=dssp.listDT.indexOf(x);
                     break;
                 }
                 
@@ -112,12 +112,12 @@ public class ChiTietHoaDon  implements Serializable
             soLuong=sc.nextInt();
             if(soLuong<=0)
                 System.out.print("\n!!!Wrong. số lượng phải lớn hơn không.!!!");
-            if(temp.SoLuong<soLuong)
+            if(temp.getSoLuong()<soLuong)
                 System.out.print("\n!!!Số lượng nhập vào lớn hơn số lượng hiện có của sản phẩm trong danh sách.!!");
             
-        } while (soLuong<=0 || temp.SoLuong<soLuong);
+        } while (soLuong<=0 || temp.getSoLuong()<soLuong);
         //cập nhật lại số lượng cho sản phẩm đang nhập này.
-        dssp.listSP.get(indexSP).setSoLuong(dssp.listSP.get(indexSP).getSoLuong()-this.soLuong);
+        dssp.listDT.get(indexSP).setSoLuong(dssp.listDT.get(indexSP).getSoLuong()-this.soLuong);
         
         do {            
             System.out.print("\n Nhập giảm giá (0 -> 100)%:");
@@ -130,6 +130,6 @@ public class ChiTietHoaDon  implements Serializable
         System.out.format("\n%-10s%-10s%-10d%-10.2f%-15.3f", maHD,maSP,soLuong,giamGia,ThanhTien());
     }
     public double ThanhTien(){
-        return soLuong*temp.DonGiaBan-soLuong*temp.DonGiaBan*giamGia/100;
+        return soLuong*temp.getDonGiaBan()-soLuong*temp.getDonGiaBan()*giamGia/100;
     }
 }

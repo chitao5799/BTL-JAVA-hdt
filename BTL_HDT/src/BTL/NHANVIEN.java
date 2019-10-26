@@ -156,7 +156,7 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
         int  NgayThangNam=-1;//lưu trữ giá trị kiểm tra tính hợp lệ ngày nhập ,=1 thì nhập đúng ngày.
         do{
             do{
-                System.out.print("\n nhập ngày bán (dd/mm/yyyy:)");
+                System.out.print("\n nhập ngày sinh (dd/mm/yyyy):");
                 day=sc.nextLine();
                 if(day.split("/").length!=3)
                 System.out.print("\n!!!!Bạn đã nhập ngày tháng sai !!!!."); 
