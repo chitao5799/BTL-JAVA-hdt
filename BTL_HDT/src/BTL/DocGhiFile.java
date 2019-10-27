@@ -20,7 +20,8 @@ import java.util.ArrayList;
  */
 public class DocGhiFile <T>{
    ArrayList<T> listDT=new ArrayList<>();//lưu danh sách các đối tượng kiểu T
-
+   /*thêm private cho các thuộc tính của đối tượng nhưng trước đó đã ghi file mà không
+   có private ở các thuộc tính đó thì khi đọc sẽ báo lỗi ,phải nhập và ghi file lại mới đọc được*/
     public ArrayList<T> getListDT() {
         return listDT;
     }

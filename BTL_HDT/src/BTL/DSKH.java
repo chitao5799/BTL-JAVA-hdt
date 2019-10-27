@@ -6,14 +6,14 @@
 package BTL;
 
 //import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-//import java.io.Serializable;
-import java.util.ArrayList;
+//import java.io.FileInputStream;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
+////import java.io.Serializable;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -51,7 +51,7 @@ public class DSKH extends DocGhiFile<KHACHHANG>{//implements Serializable
     }
         public void XuatDSKH(){
             System.out.print("\ndanh sách khách hàng:");
-            System.out.printf("\n%-10s%-20s%-25s%-15s","mã KH","tên KH","địa chỉ","số đt");
+            System.out.printf("\n%-10s%-20s%-25s%-15s%-7s","mã KH","tên KH","địa chỉ","số đt","GT");
             for (KHACHHANG x : listDT) {
                 x.xuat();
             }

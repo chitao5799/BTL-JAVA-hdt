@@ -5,13 +5,13 @@
  */
 package BTL;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+//import java.io.FileInputStream;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
+//import java.util.ArrayList;
 //import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
@@ -37,7 +37,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
                 //do{               
                 for ( int j=0;j<listDT.size();j++) {                    
                      temp=listDT.get(j);
-                    if(xNhanvien.maNV.equals(temp.maNV))//==temp.maNV
+                    if(xNhanvien.getMaNV().equals(temp.getMaNV()))//==temp.maNV
                     {
                         System.out.println("\n !!!!!! WRONG!!: bạn đã nhập trùng mã nhân viên,mời nhập lại !!!!!! ");
                         //break;
@@ -45,7 +45,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
                         String mamoi;                        
                         System.out.print("\n nhập mã mới cho nhân viên:");
                         mamoi=sc.nextLine();
-                        xNhanvien.maNV=mamoi;
+                        xNhanvien.setMaNV(mamoi);//=mamoi;
                         j=-1;
                     }
                 }                
@@ -58,7 +58,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
         System.out.printf("%-10s%-20s%-25s%-8s%-20s%-15s%-15s%-8s\n","ma nv","ten nv",
                 "dia chi","gt","chuc vu","DT","luong","NS");
         for (NHANVIEN temp : listDT) {
-            temp.Xuat();
+            temp.xuat();
         }
     }
     public void timNV()
@@ -70,7 +70,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
         System.out.print("\ndanh sách các nhân viên muốn tìm\n");
         for (NHANVIEN x : listDT) {
             if(x.equals(temp))
-                x.Xuat();
+                x.xuat();
             
         }
     }
@@ -83,11 +83,12 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
     }
     public void add1NV(){
         NHANVIEN xNhanvien=new NHANVIEN();
-        NHANVIEN temp=new NHANVIEN();        
+        NHANVIEN temp=new NHANVIEN();  
+         
             xNhanvien.nhap();
              for ( int j=0;j<listDT.size();j++) {                    
                      temp=listDT.get(j);
-                    if(xNhanvien.maNV.equals(temp.maNV))//==temp.maNV
+                    if(xNhanvien.getMaNV().equals(temp.getMaNV()))//==temp.maNV
                     {
                         System.out.println("\n !!!!!! WRONG!!: bạn đã nhập trùng mã nhân viên,mời nhập lại !!!!!! ");
                         //break;
@@ -95,7 +96,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
                         String mamoi;                        
                         System.out.print("\n nhập mã mới cho nhân viên:");
                         mamoi=sc.nextLine();
-                        xNhanvien.maNV=mamoi;
+                        xNhanvien.setMaNV(mamoi);//=mamoi;
                         j=-1;
                     }
                 }    
@@ -109,7 +110,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
         maTim=sc.nextLine();
         
         for (NHANVIEN x : listDT) {
-            if(maTim.equals(x.maNV))//if(x.maNV==maTim)
+            if(maTim.equals(x.getMaNV()))//if(x.maNV==maTim)
             {
                 indexs=listDT.indexOf(x);               
                 return indexs;
@@ -145,7 +146,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
         {
             NHANVIEN temp=listDT.get(index);
             System.out.print("\n bạn muốn sửa thông tin gì, mời lựa chọn:");
-            System.out.print("\n1.địa chỉ; 2.chức vụ; 3.số điện thoại; 4.lương");
+            System.out.print("\n1.địa chỉ; 2.chức vụ; 3.số điện thoại; 4. hệ số lương");
              //sc.nextLine();
             int luachon=-1;
             System.out.print("\nvui lòng nhập lựa chọn:");
@@ -155,37 +156,37 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
             {
                 case 1:{
                     String dc;
-                    System.out.print("\n nhập địa chỉ mới cho nhân viên \""+temp.tenNV+"\":");
+                    System.out.print("\n nhập địa chỉ mới cho nhân viên \""+temp.getHoTen()+"\":");
                     dc=sc.nextLine();
-                    temp.diaChi=dc;
+                    temp.setDiaChi(dc);//=dc;
                     listDT.set(index, temp);
                 };break;
                 case 2:{
                     String cv;
-                    System.out.print("\n nhập chức vụ mới cho nhân viên \""+temp.tenNV+"\":");
+                    System.out.print("\n nhập chức vụ mới cho nhân viên \""+temp.getHoTen()+"\":");
                     cv=sc.nextLine();
-                    temp.chucVu=cv;
+                    temp.setChucVu(cv);//=cv;
                     listDT.set(index, temp);
                 };break;
                 case 3:{
                     long dienthoai;
-                    System.out.print("\n nhập số điện thoại mới cho nhân viên \""+temp.tenNV+"\":");
+                    System.out.print("\n nhập số điện thoại mới cho nhân viên \""+temp.getHoTen()+"\":");
                     dienthoai=sc.nextLong();
                     sc.nextLine();
-                    temp.dt=dienthoai;
+                    temp.setDienThoai(dienthoai);//=dienthoai;
                     listDT.set(index, temp);
                     
                 };break;
                 case 4:{
-                    float l;
-                    System.out.print("\n nhập lương mới cho nhân viên \""+temp.tenNV+"\":");
-                    l=sc.nextFloat();
+                    int hsl;
+                    System.out.print("\n nhập hệ sô lương mới cho nhân viên \""+temp.getHoTen()+"\":");
+                    hsl=sc.nextInt();
                     sc.nextLine();
-                    temp.luong=l;
+                    temp.setHeSoLuong(hsl);//=l;
                     listDT.set(index, temp);
                 };break;
                 default:System.out.println("bạn đã không lựa chọn mục để sửa nên thông "
-                        + "tin của nhân viên:\""+temp.tenNV+"\" sẽ giữ nguyên");
+                        + "tin của nhân viên:\""+temp.getHoTen()+"\" sẽ giữ nguyên");
             } 
         }        
     }

@@ -16,7 +16,7 @@ import java.io.IOException;
 //import java.text.DateFormat;
 import java.text.ParseException;
 //import java.time.LocalDate;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
 //import java.util.logging.ConsoleHandler;
 //import javafx.util.converter.LocalDateStringConverter;
@@ -39,7 +39,10 @@ public class MAIN {
         DSHD listHDdocfile=new DSHD();
         DSSP listSPdocfile=new DSSP();
         DSChiTietHD listCTHDdocfile=new DSChiTietHD();
-        /**
+        /**thêm private cho đối tượng,phải nhập ghi file lại mới đọc được
+         * thêm hàm xuất ds đọc từ file ở mỗi đt
+         * thêm hàm ghi file đc đọc từ file khi có thay đổi.
+         * 
          * có khả năng 
          * phải tạo hàm xuất danh sách đọc từ file riêng bởi vì chi tiết hóa đơn sau 
          * khi nhập nếu ko muốn thay đổi dl trong file mà xuất ra xem kết quả của
@@ -53,7 +56,7 @@ public class MAIN {
                 case 1:XuLyNhanVien(listNVdocfile);break;
                 case 2: XuLyKhachHang(listKHdocfile);break;
                 case 3: XuLySanPham(listSPdocfile);break;
-                case 4:XuLyHoaDon(listNVdocfile, listKHdocfile, listHDdocfile);break;
+                case 4:XuLyHoaDon(listNVdocfile, listKHdocfile, listHDdocfile,listCTHDdocfile);break;
                 case 5: XuLyChiTietHoaDon(listCTHDdocfile, listHDdocfile, listSPdocfile);break;
                 default: break;
             }
@@ -399,7 +402,7 @@ public class MAIN {
             }
         }while (LuaChonSanPham!=0);
     }
-    static void XuLyHoaDon(DSNV listNVdocfile, DSKH listKHdocfile,DSHD listHDdocfile) throws IOException, FileNotFoundException, ClassNotFoundException{
+    static void XuLyHoaDon(DSNV listNVdocfile, DSKH listKHdocfile,DSHD listHDdocfile,DSChiTietHD lisCTHDdocfile) throws IOException, FileNotFoundException, ClassNotFoundException{
         Scanner sc =new Scanner(System.in);
         int LuaChonHoaDon=-1;
         DSHD listDT= new DSHD();
@@ -483,6 +486,11 @@ public class MAIN {
                             }
                         } 
                 };break;
+                case 6:{
+                    listHDdocfile.TinhTongTien(lisCTHDdocfile);
+                };break;
+                case 7: listHDdocfile.TimHDtheoNgay();break;
+                case 8: listHDdocfile.TimHDLapByNV();break;
                 default: break;
             }
         }while (LuaChonHoaDon!=0);
@@ -659,6 +667,10 @@ public class MAIN {
         System.out.printf("\n%20s\t%-54s%c","|","3.Ghi danh sách Hóa Đơn vào file.",'|');
         System.out.printf("\n%20s\t%-54s%c","|","4.Đọc danh sách Hóa Đơn từ file.",'|'); 
         System.out.printf("\n%20s\t%-54s%c","|","5.Nhập thêm 1 bản ghi hóa đơn mới.",'|'); 
+        System.out.printf("\n%20s\t%-54s%c","|","6.Xuất tổng tiền của các hóa đơn.",'|'); 
+        System.out.printf("\n%20s\t%-54s%c","|","7.Tìm các hóa đơn được lập trong 1 khoảng thời gian.",'|');
+        System.out.printf("\n%20s\t%-54s%c","|","8.Tìm các hóa đơn được lập bởi nhân viên theo mã NV.",'|');
+
         System.out.printf("\n%20s\t%-54s%c","|","0.Thoát.",'|');
         System.out.printf("\n%19s"," ");
         for (int i = 0; i < 60; i++) {

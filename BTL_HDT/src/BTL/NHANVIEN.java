@@ -21,58 +21,60 @@ import java.util.Scanner;
  *
  * @author NCT99
  */
-public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
-    String maNV, tenNV, diaChi,gt,chucVu;
-    long dt;
-    float luong;
-    Date ngaySinh;
-
+public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializable{
+    private String maNV,chucVu;//, tenNV, diaChi,gt;
+   // long dt;
+    private static float luongCoBan;
+    private int heSoLuong;
+    private Date ngaySinh;
+    private float luong;
     public NHANVIEN() {
-        ngaySinh=new Date(0, 0, 0);
+        super();
+        luongCoBan =1100.0f;
+      //  ngaySinh=new Date(0, 0, 0);
     }
     
-    public NHANVIEN(String maNV, String tenNV, String diaChi, String gt,
-            String chucVu, long dt, float luong, Date ngaySinh) {
+//    public NHANVIEN(String maNV, String tenNV, String diaChi, String gt,
+//            String chucVu, long dt, float luong, Date ngaySinh) {
+//        this.maNV = maNV;
+//        this.tenNV = tenNV;
+//        this.diaChi = diaChi;
+//        this.gt = gt;
+//        this.chucVu = chucVu;
+//        this.dt = dt;
+//        this.luong = luong;
+//        this.ngaySinh = ngaySinh;
+//    }
+
+    public NHANVIEN(String maNV, String chucVu, int heSoLuong, Date ngaySinh) {
         this.maNV = maNV;
-        this.tenNV = tenNV;
-        this.diaChi = diaChi;
-        this.gt = gt;
         this.chucVu = chucVu;
-        this.dt = dt;
-        this.luong = luong;
+        this.heSoLuong = heSoLuong;
         this.ngaySinh = ngaySinh;
     }
 
+    public NHANVIEN(String maNV, String chucVu, int heSoLuong, Date ngaySinh, String hoTen, String diaChi, String gioiTinh, long dienThoai) {
+        super(hoTen, diaChi, gioiTinh, dienThoai);
+        this.maNV = maNV;
+        this.chucVu = chucVu;
+        this.heSoLuong = heSoLuong;
+        this.ngaySinh = ngaySinh;
+    }
+    
     public String getMaNV() {
         return maNV;
     }
 
+    public float getLuong() {
+        return luong;
+    }
+
+    public void setLuong(float luong) {
+        this.luong = luong;
+    }
+    
     public void setMaNV(String maNV) {
         this.maNV = maNV;
-    }
-
-    public String getTenNV() {
-        return tenNV;
-    }
-
-    public void setTenNV(String tenNV) {
-        this.tenNV = tenNV;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
-    public String getGt() {
-        return gt;
-    }
-
-    public void setGt(String gt) {
-        this.gt = gt;
     }
 
     public String getChucVu() {
@@ -83,20 +85,20 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
         this.chucVu = chucVu;
     }
 
-    public long getDt() {
-        return dt;
+    public static float getLuongCoBan() {
+        return luongCoBan;
     }
 
-    public void setDt(long dt) {
-        this.dt = dt;
+    public static void setLuongCoBan( float luongCoBan) {
+        NHANVIEN.luongCoBan = luongCoBan;
     }
 
-    public float getLuong() {
-        return luong;
+    public int getHeSoLuong() {
+        return heSoLuong;
     }
 
-    public void setLuong(float luong) {
-        this.luong = luong;
+    public void setHeSoLuong(int heSoLuong) {
+        this.heSoLuong = heSoLuong;
     }
 
     public Date getNgaySinh() {
@@ -106,6 +108,11 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
     public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
+    
+    
+
+    
+   
     public void nhap(){
         Scanner sc=new Scanner(System.in);        
         do {            
@@ -114,28 +121,30 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
             if(maNV.isEmpty())
                 System.out.print("\n!!! mã nhân viên không được để trống.!!!");
         } while (maNV.isEmpty());
-        do {            
-            System.out.print("\n Nhập tên nhân viên:");
-             tenNV=sc.nextLine();
-            if(tenNV.isEmpty())
-                System.out.print("\n!!! Tên nhân viên không được để trống.!!!");
-        } while (tenNV.isEmpty());
+        super.nhapPerSon();
+//        do {            
+//            System.out.print("\n Nhập tên nhân viên:");
+//             tenNV=sc.nextLine();
+//            if(tenNV.isEmpty())
+//                System.out.print("\n!!! Tên nhân viên không được để trống.!!!");
+//        } while (tenNV.isEmpty());
         
-        System.out.print("\n Nhập địa chỉ của nhân viên:");
-        diaChi=sc.nextLine();
-        System.out.print("\n Nhập giới tính cho nhân viên:");
-        gt=sc.nextLine();
+//        System.out.print("\n Nhập địa chỉ của nhân viên:");
+//        diaChi=sc.nextLine();
+//        System.out.print("\n Nhập giới tính cho nhân viên:");
+//        gt=sc.nextLine();
         System.out.print("\n Nhập chức vụ nhân viên:");
         chucVu=sc.nextLine();
-        System.out.print("\n Nhập điện thoại nhân viên:");
-        dt=sc.nextLong();
+//        System.out.print("\n Nhập điện thoại nhân viên:");
+//        dt=sc.nextLong();
         do{
-            System.out.print("\n Nhập lương nhân viên(. not ,):");
-            luong=sc.nextFloat();
-            if (luong<=0) {
-                System.out.print("\n !!!Lương phải lớn hơn 0.!!!");
+            System.out.print("\n Nhập hệ số lương nhân viên:");
+            heSoLuong=sc.nextInt();
+            if (heSoLuong<=0) {
+                System.out.print("\n !!!hệ số lương phải lớn hơn 0.!!!");
             }
-        }while(luong<=0);
+        }while(heSoLuong<=0);
+        luong=luongCoBan*heSoLuong;
         sc.nextLine();
 //        int day,month,year;
 //        do {            
@@ -214,10 +223,12 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
 
          return (ngay > 0 && ngay <= ngayTrongThang[thang - 1]);
     } */
-    public void Xuat(){
+    @Override
+    public void xuat(){
         System.out.printf("%-10s%-20s%-25s%-8s%-20s%-15d%-15.3f%-2d/%-2d/%-4d\n",
-                maNV,tenNV,diaChi,gt,chucVu,dt,luong,ngaySinh.getDate(),
-                (ngaySinh.getMonth()==0)?12:ngaySinh.getMonth(),ngaySinh.getYear());
+                maNV,this.getHoTen(),this.getDiaChi(),this.getGioiTinh(),chucVu,this.getDienThoai(),luong,ngaySinh.getDate(),
+                (ngaySinh.getMonth()==0)?12:ngaySinh.getMonth(),
+                (ngaySinh.getMonth()==0)?ngaySinh.getYear()-1:ngaySinh.getYear());
     }
 //     public void Xuat(){
 //        System.out.printf("%-7s%-15s%-15s%-5s%-10s%-12d%-10.3f,%-10s",
@@ -227,18 +238,26 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
 //                351234, 344.687f,new Date(2002, 11,10) );//DateFormat.getDateInstance().parse("2001/29/11")
 //        a.Xuat();
    
+//    public float luong(){
+//        return luongCoBan*heSoLuong;
+//    }
+
     @Override
     public String toString() {
-        return "NHANVIEN{" + "maNV=" + maNV + ", tenNV=" + tenNV + ", diaChi=" 
-                + diaChi + ", gt=" + gt + ", chucVu=" + chucVu + ", dt=" + dt 
-                + ", luong=" + luong + ", ngaySinh=" + ngaySinh + '}';
+        return "NHANVIEN{" + "maNV=" + maNV +"hoTen=" + super.getHoTen() + 
+                ", diaChi=" + super.getDiaChi() + ", gioiTinh=" + super.getGioiTinh() 
+                + ", dienThoai=" + super.getDienThoai()+ ", chucVu=" + chucVu +
+                ", heSoLuong=" + heSoLuong + ", ngaySinh=" + ngaySinh +", lương="+luong+ '}';
     }
+
+   
+    
  //   @Override
 
         public boolean equals(String obj){
 
            // if(obj instanceof NHANVIEN){
-                String[] temp=(this.tenNV).split(" ");
+                String[] temp=(super.getHoTen()).split(" ");
                 for(int i=0;i<temp.length;i++)
                 if(obj.equals(temp[i])){//(NHANVIEN)obj
                       return true;
@@ -250,9 +269,9 @@ public class NHANVIEN implements Comparable<NHANVIEN>,Serializable{
     //Comparable interface:chỉ có thể sắp xếp theo duy nhất một thuộc  tính nào đó của nhân viên thôi
     //Cung cấp phương thức compareTo() và Sắp xếp sử dụng Collections.sort(List)
     public int compareTo(NHANVIEN nv) {
-		if (this.luong == nv.luong)
+		if (this.getLuong() == nv.getLuong())
 			return 0;
-		else if (this.luong > nv.luong)
+		else if (this.getLuong() > nv.getLuong())
 			return 1;
 		else
 			return -1;
@@ -271,26 +290,26 @@ dụng để sắp xếp các phần tử của list dựa trên Comparator.
 class NgaySinhComparator implements Comparator<NHANVIEN> {//sắp xếp theo ngày sinh , dùng comparator
         @Override
 	public int compare(NHANVIEN s1, NHANVIEN s2) {
-		if (s1.ngaySinh.getYear() == s2.ngaySinh.getYear())
+		if (s1.getNgaySinh().getYear() == s2.getNgaySinh().getYear())
                 {	
-                    if(s1.ngaySinh.getMonth()==s2.ngaySinh.getMonth())
+                    if(s1.getNgaySinh().getMonth()==s2.getNgaySinh().getMonth())
                     {
-                        if(s1.ngaySinh.getDate()==s2.ngaySinh.getDate())
+                        if(s1.getNgaySinh().getDate()==s2.getNgaySinh().getDate())
                             return 0;
                         else
-                            if(s1.ngaySinh.getDate()>s2.ngaySinh.getDate())
+                            if(s1.getNgaySinh().getDate()>s2.getNgaySinh().getDate())
                                 return 1;
                             else 
                                     return -1;
                     }
                     else                    
-                        if(s1.ngaySinh.getMonth()>s2.ngaySinh.getMonth())
+                        if(s1.getNgaySinh().getMonth()>s2.getNgaySinh().getMonth())
                             return 1;
                         else 
                             return -1;          
                 }
 		else 
-                    if (s1.ngaySinh.getYear() > s2.ngaySinh.getYear())
+                    if (s1.getNgaySinh().getYear() > s2.getNgaySinh().getYear())
 			return 1;
                     else
 			return -1;
@@ -301,8 +320,8 @@ class NgaySinhComparator implements Comparator<NHANVIEN> {//sắp xếp theo ng�
 class NameComparator implements Comparator<NHANVIEN> {
         @Override
 	public int compare(NHANVIEN s1, NHANVIEN s2) {
-                String[] ten1=s1.tenNV.split(" ");
-                String[] ten2=s2.tenNV.split(" ");
+                String[] ten1=s1.getHoTen().split(" ");
+                String[] ten2=s2.getHoTen().split(" ");
 		return ten1[ten1.length-1].compareTo(ten2[ten2.length-1]);
 	}
 }

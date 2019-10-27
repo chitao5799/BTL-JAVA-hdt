@@ -13,9 +13,9 @@ import java.util.Scanner;
  * @author NCT99
  */
 public class SanPham implements Serializable{
-     String maSP, tenSP,ChatLieuVai;//private
-     int Size,SoLuong;//private
-     double DonGiaNhap,DonGiaBan;//private
+    private String maSP, tenSP,ChatLieuVai;//
+    private int Size,SoLuong;//
+    private double DonGiaNhap,DonGiaBan;//
 
     public SanPham() {
     }

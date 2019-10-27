@@ -15,11 +15,11 @@ import java.util.Scanner;
  */
 public class ChiTietHoaDon  implements Serializable
 {
-    String maSP,maHD;
-    int soLuong=0;
-    double giamGia=0.0;
+    private String maSP,maHD;
+    private int soLuong=0;
+    private double giamGia=0.0;
     SanPham temp=new SanPham();
-    int indexSP=-1;
+    private int indexSP=-1;
     public ChiTietHoaDon() {
     }
 
@@ -73,7 +73,7 @@ public class ChiTietHoaDon  implements Serializable
             System.out.print("\n Nhập mã hóa đơn bán:");
             maHD=sc.nextLine();
             for (HoaDonBan x : dshd.listDT) {
-                if(maHD.equals(x.maHD))
+                if(maHD.equals(x.getMaHD()))
                 {
                     coHD=1;
                     break;

@@ -14,8 +14,8 @@ import java.util.Scanner;
  * @author NCT99
  */
 public class HoaDonBan implements Serializable{
-    String maHD,maNV,maKH;
-    Date ngayBan;
+    private String maHD,maNV,maKH;
+    private Date ngayBan;
 
     public HoaDonBan() {
     }
@@ -77,7 +77,7 @@ public class HoaDonBan implements Serializable{
             System.out.print("\n Nhập mã nhân viên:");
              maNV=sc.nextLine();
              for (NHANVIEN temp : dsnv.listDT) {
-                if(maNV.equals(temp.maNV))
+                if(maNV.equals(temp.getMaNV()))
                 {
                     coNV=1;
                     break;
@@ -166,6 +166,43 @@ public class HoaDonBan implements Serializable{
     } */
     public void xuatHD(){
         System.out.printf("\n%-10s%-10s%-10s%2d/%2d/%4d", maHD,maNV,maKH,ngayBan.getDate(),
-                ngayBan.getMonth(),ngayBan.getYear());
+                (ngayBan.getMonth()==0)?12:ngayBan.getMonth(),
+                (ngayBan.getMonth()==0)?ngayBan.getYear()-1:ngayBan.getYear());
     }
+//    public double TinhTongTien(DSChiTietHD dscthd){//,DSHD dshd
+//        Scanner sc =new Scanner(System.in);
+//        String mahd;
+//        System.out.print("\n Nhập mã hóa đơn muốn tính tổng tiền.");
+//        mahd=sc.nextLine(); //lưu trữ mã hóa đơn muốn tìm
+//        boolean coHD=false;
+//        for (HoaDonBan x : dshd.listDT) {
+//            if(mahd.equals(x.getMaHD()))
+//            {
+//                coHD=true;
+//                break;
+//            }
+//        }
+//        if(!coHD){
+//            System.out.print("\n!!!!Trong danh sách hóa đơn không có hóa đơn bạn cần.!!!");
+//            return;
+//        }
+//        coHD=false; //xét lại có hóa đơn là false để kiểm tra xem trong danh sách 
+        //chi tiết hóa đơn có bản ghi của hóa đơn này không.
+           
+//            double sums=0.0;
+//        for (ChiTietHoaDon col : dscthd.listDT) {
+//            if(this.maHD.equals(col.getMaHD()))
+//            {
+//                sums+=col.ThanhTien();
+//               // coHD=true;
+//            }
+//           
+//        }
+////        if (!coHD){ 
+////            System.out.print("\n!!!Mã hóa đơn \""+mahd+"\" chưa có bản ghi nào trong chi tiết hóa đơn, nên hóa đơn này không có tổng tiền.!!!!");
+////        }
+////        else
+////            System.out.printf("\n Tổng tiền của mã hóa đơn %s là:%.2f",mahd,sums);
+//        return sums;
+//    }
 }
