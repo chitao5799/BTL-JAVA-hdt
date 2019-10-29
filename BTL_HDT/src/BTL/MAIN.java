@@ -97,15 +97,16 @@ public class MAIN {
                     
                 };break;
                 case 4:{
-                    sc.nextLine();                    
+                    sc.nextLine(); 
+                    
                     String filename="nhanvien.dat",temp;
                     System.out.print("\n nhập tên file muốn đọc, nhập cả phần mở rộng (tên mặc định: nhanvien.dat):");
                     temp=sc.nextLine();
                     if (!temp.isEmpty()) {
                         filename=temp;
                     }
-                    listNVdocfile.docfile(filename);   
-                    
+                    listNVdocfile.docfile(filename); 
+                   
                 };break;
                 case 5:{
                     sc.nextLine();

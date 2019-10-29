@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author NCT99
@@ -40,10 +41,14 @@ public class DocGhiFile <T>{
            fout.close();
         }
     public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
+            try{ 
             FileInputStream fin =new FileInputStream(filename);
             ObjectInputStream obin =new ObjectInputStream(fin);           
             listDT=(ArrayList)obin.readObject();
-            obin.close();fin.close();
-            
+            obin.close();//fin.close();
+            }catch(Exception e){
+                
+                System.out.print("\n!!!Lỗi :"+e);
+            }
         }
 }

@@ -102,8 +102,8 @@ public class HoaDonBan implements Serializable{
          }while(coKh!=1);
          String day;
         String[] arrday=new String[3]; 
-        int NgayThangNam=-1;//lưu trữ giá trị kiểm tra tính hợp lệ ngày nhập ,=1 thì nhập đúng ngày.
-         
+        //int //lưu trữ giá trị kiểm tra tính hợp lệ ngày nhập ,=1 thì nhập đúng ngày.
+         boolean NgayThangNam=false;
         do{
             do{
                 System.out.print("\n nhập ngày bán (dd/mm/yyyy):");
@@ -119,51 +119,49 @@ public class HoaDonBan implements Serializable{
 //        else if(Integer.valueOf(arrday[2])<=0)
 //             System.out.print("\n !!!!!!  ngày tháng không chính xác. !!!!!! ");    
             // *
-            // NgayThangNam=NgayHopLe(Integer.valueOf(arrday[0]), Integer.valueOf(arrday[1]), Integer.valueOf(arrday[2]));
+            NgayThangNam=NgayHopLe(Integer.valueOf(arrday[0]), Integer.valueOf(arrday[1]), Integer.valueOf(arrday[2]));
            //  *  //
-             int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-            if(Integer.valueOf(arrday[1]) <= 0 || Integer.valueOf(arrday[1]) > 12)
-              NgayThangNam= -1;
-            else {
-                  if((((Integer.valueOf(arrday[2]) % 4 == 0) && (Integer.valueOf(arrday[2]) % 100 != 0)) || (Integer.valueOf(arrday[2]) % 400 == 0)))
-                    ngayTrongThang[1]++;
-                  if(Integer.valueOf(arrday[2])<=0)
-                       NgayThangNam= -1;
-                  else  if((Integer.valueOf(arrday[0]) > 0 && Integer.valueOf(arrday[0]) <= ngayTrongThang[Integer.valueOf(arrday[1]) - 1]))
-                       NgayThangNam=1;
-                        else NgayThangNam=-1;
-            }
+//             int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+//            if(Integer.valueOf(arrday[1]) <= 0 || Integer.valueOf(arrday[1]) > 12)
+//              NgayThangNam= -1;
+//            else {
+//                  if((((Integer.valueOf(arrday[2]) % 4 == 0) && (Integer.valueOf(arrday[2]) % 100 != 0)) || (Integer.valueOf(arrday[2]) % 400 == 0)))
+//                    ngayTrongThang[1]++;
+//                  if(Integer.valueOf(arrday[2])<=0)
+//                       NgayThangNam= -1;
+//                  else  if((Integer.valueOf(arrday[0]) > 0 && Integer.valueOf(arrday[0]) <= ngayTrongThang[Integer.valueOf(arrday[1]) - 1]))
+//                       NgayThangNam=1;
+//                        else NgayThangNam=-1;
+//            }
             //  * //
-            if(NgayThangNam==-1)
+            if(NgayThangNam==false)
                 System.out.print("\n  !!!!!! ngày tháng năm không chính xác. !!!!!! ");
-        }while(NgayThangNam==-1);
+        }while(NgayThangNam==false);
 //        while(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1||
 //                Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12||
 //                Integer.valueOf(arrday[2])<=0 ); 
         ngayBan=new Date(Integer.valueOf(arrday[2]),Integer.valueOf(arrday[1]),
                 Integer.valueOf(arrday[0]));
     }
-     /*int NamNhuan(int nam)
-    { 
-         return (((nam % 4 == 0) && (nam % 100 != 0)) || (nam % 400 == 0))?1:-1;
+     public boolean NamNhuan(int year)
+    {
+         return(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
     }
 
-     int NgayHopLe(int ngay, int thang,int nam)
+    public boolean NgayHopLe(int ngay, int thang,int nam)
     {
-         
          int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
          if(thang <= 0 || thang > 12)
-              return -1;
+              return false;
 
          //Năm nhuận tháng 2 29 ngày:
-         if(NamNhuan(nam)==1)
+         if(NamNhuan(nam))
               ngayTrongThang[1]++;
          if(nam<=0)
-             return -1;
-         
+             return false;
 
-         return (ngay > 0 && ngay <= ngayTrongThang[thang - 1])?1:-1;
-    } */
+         return (ngay > 0 && ngay <= ngayTrongThang[thang - 1]);
+    } /**/
     public void xuatHD(){
         System.out.printf("\n%-10s%-10s%-10s%2d/%2d/%4d", maHD,maNV,maKH,ngayBan.getDate(),
                 (ngayBan.getMonth()==0)?12:ngayBan.getMonth(),

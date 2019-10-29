@@ -138,8 +138,9 @@ public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializabl
 //        System.out.print("\n Nhập điện thoại nhân viên:");
 //        dt=sc.nextLong();
         do{
-            System.out.print("\n Nhập hệ số lương nhân viên:");
-            heSoLuong=sc.nextInt();
+                 System.out.print("\n Nhập hệ số lương nhân viên:");
+                 heSoLuong=sc.nextInt();
+           
             if (heSoLuong<=0) {
                 System.out.print("\n !!!hệ số lương phải lớn hơn 0.!!!");
             }
@@ -162,7 +163,8 @@ public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializabl
         
         String day;
         String[] arrday=new String[3];
-        int  NgayThangNam=-1;//lưu trữ giá trị kiểm tra tính hợp lệ ngày nhập ,=1 thì nhập đúng ngày.
+        //int  NgayThangNam=-1;//lưu trữ giá trị kiểm tra tính hợp lệ ngày nhập ,=1 thì nhập đúng ngày.
+       boolean NgayThangNam=false;
         do{
             do{
                 System.out.print("\n nhập ngày sinh (dd/mm/yyyy):");
@@ -177,24 +179,24 @@ public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializabl
 //                System.out.print("\n  !!!!!! ngày tháng không chính xác. !!!!!! ");
 //        else if(Integer.valueOf(arrday[2])<=0)
 //             System.out.print("\n !!!!!!  ngày tháng không chính xác. !!!!!! ");
-          //  NgayThangNam=NgayHopLe(Integer.valueOf(arrday[0]), Integer.valueOf(arrday[1]), Integer.valueOf(arrday[2]));
+            NgayThangNam=NgayHopLe(Integer.valueOf(arrday[0]), Integer.valueOf(arrday[1]), Integer.valueOf(arrday[2]));
            //  * //thay thế cho 2 hàm NanNhuan và NgayHopLe
-            int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-            if(Integer.valueOf(arrday[1]) <= 0 || Integer.valueOf(arrday[1]) > 12)
-              NgayThangNam= -1;
-            else {
-                  if((((Integer.valueOf(arrday[2]) % 4 == 0) && (Integer.valueOf(arrday[2]) % 100 != 0)) || (Integer.valueOf(arrday[2]) % 400 == 0)))
-                    ngayTrongThang[1]++;
-                  if(Integer.valueOf(arrday[2])<=0)
-                       NgayThangNam= -1;
-                  else  if((Integer.valueOf(arrday[0]) > 0 && Integer.valueOf(arrday[0]) <= ngayTrongThang[Integer.valueOf(arrday[1]) - 1]))
-                       NgayThangNam=1;
-                        else NgayThangNam=-1;
-            }
+//            int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+//            if(Integer.valueOf(arrday[1]) <= 0 || Integer.valueOf(arrday[1]) > 12)
+//              NgayThangNam= -1;
+//            else {
+//                  if((((Integer.valueOf(arrday[2]) % 4 == 0) && (Integer.valueOf(arrday[2]) % 100 != 0)) || (Integer.valueOf(arrday[2]) % 400 == 0)))
+//                    ngayTrongThang[1]++;
+//                  if(Integer.valueOf(arrday[2])<=0)
+//                       NgayThangNam= -1;
+//                  else  if((Integer.valueOf(arrday[0]) > 0 && Integer.valueOf(arrday[0]) <= ngayTrongThang[Integer.valueOf(arrday[1]) - 1]))
+//                       NgayThangNam=1;
+//                        else NgayThangNam=-1;
+//            }
            // * // 
-            if(NgayThangNam==-1)
+            if(NgayThangNam==false)
                 System.out.print("\n  !!!!!! ngày tháng năm không chính xác. !!!!!! ");
-        }while(NgayThangNam==-1);
+        }while(NgayThangNam==false);
 //            while(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1||
 //                Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12||
 //                Integer.valueOf(arrday[2])<=0 ); 
@@ -203,7 +205,7 @@ public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializabl
        // sc.nextLine();
         
     }
-    /* //hai hàm này gây ra bị lỗi khi đọc file, vẫn không hiểu tại sao.
+     //hai hàm này gây ra bị lỗi khi đọc file, vẫn không hiểu tại sao.
     public boolean NamNhuan(int year)
     {
          return(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
@@ -222,7 +224,7 @@ public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializabl
              return false;
 
          return (ngay > 0 && ngay <= ngayTrongThang[thang - 1]);
-    } */
+    }/* */
     @Override
     public void xuat(){
         System.out.printf("%-10s%-20s%-25s%-8s%-20s%-15d%-15.3f%-2d/%-2d/%-4d\n",

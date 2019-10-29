@@ -80,9 +80,13 @@ public abstract class PerSon implements Serializable{
            if(!gioiTinh.toLowerCase().equals("nu") && !gioiTinh.toLowerCase().equals("nam") ) 
               System.out.print("\n!!!Wrong. bạn đã nhập sai giới tính.!!!!");
         } while (!gioiTinh.toLowerCase().equals("nu") && !gioiTinh.toLowerCase().equals("nam"));
-
-         System.out.print("\n Nhập điện thoại cho Người này:");
-        dienThoai=sc.nextLong();
+        try {
+             System.out.print("\n Nhập điện thoại cho Người này:");
+             dienThoai=sc.nextLong();
+        } catch (Exception e) {
+            System.out.print("\n!!!Lỗi :"+e);
+        }
+        
     }
       public abstract void xuat();
     
