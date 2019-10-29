@@ -5,26 +5,14 @@
  */
 package BTL;
 
-//import java.text.DateFormat;
-//import java.text.ParseException;
-//import com.sun.org.apache.xalan.internal.lib.ExsltDatetime;
-//import java.awt.Color;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-//import java.io.NotSerializableException;
-//import java.text.DateFormat;
+
 import java.text.ParseException;
-//import java.time.LocalDate;
-//import java.util.ArrayList;
+
 import java.util.Scanner;
-//import java.util.logging.ConsoleHandler;
-//import javafx.util.converter.LocalDateStringConverter;
-//import java.text.SimpleDateFormat;
-//import java.util.ArrayList;
-//import java.util.Date;
-//import jdk.nashorn.internal.runtime.JSType;
-//import java.util.Date;
+
 
 /**
  *
@@ -39,14 +27,6 @@ public class MAIN {
         DSHD listHDdocfile=new DSHD();
         DSSP listSPdocfile=new DSSP();
         DSChiTietHD listCTHDdocfile=new DSChiTietHD();
-        /**thêm private cho đối tượng,phải nhập ghi file lại mới đọc được
-         * thêm hàm xuất ds đọc từ file ở mỗi đt
-         * thêm hàm ghi file đc đọc từ file khi có thay đổi.
-         * 
-         * có khả năng 
-         * phải tạo hàm xuất danh sách đọc từ file riêng bởi vì chi tiết hóa đơn sau 
-         * khi nhập nếu ko muốn thay đổi dl trong file mà xuất ra xem kết quả của
-         * việc giảm số lượng sản phẩm HOẶC viết thêm method thêm và sửa ở sản phẩm và chi tiết hóa đơn.*/
         int LuaChonChinh=-1;
         do{            
             menu();

@@ -5,13 +5,6 @@
  */
 package BTL;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,7 +12,7 @@ import java.util.Scanner;
  * @author NCT99
  */
 public class DSChiTietHD extends DocGhiFile<ChiTietHoaDon>{
-  //  ArrayList<ChiTietHoaDon> listDT=new ArrayList<>();
+  
     public void nhap(DSHD dshd,DSSP dssp){
         int soLuongHD;
         Scanner sc =new Scanner(System.in);
@@ -50,22 +43,7 @@ public class DSChiTietHD extends DocGhiFile<ChiTietHoaDon>{
             xChiTietHoaDon.xuat();
         }
     }
-//     public void ghiFile(String filename) throws FileNotFoundException, IOException{
-//  
-//             FileOutputStream fout = new FileOutputStream(filename);
-//            ObjectOutputStream out =new ObjectOutputStream(fout);
-//            out.writeObject(listDT);
-//            out.close();
-//            fout.close();
-//        
-//        }
-//    public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-//            FileInputStream fin =new FileInputStream(filename);
-//            ObjectInputStream obin =new ObjectInputStream(fin);
-//            listDT=(ArrayList)obin.readObject();
-//            obin.close();fin.close();
-//           
-//    }
+
     public void add1CTHD(DSHD dshd,DSSP dssp){
         ChiTietHoaDon cthd=new ChiTietHoaDon();
             cthd.nhapCTHD(dssp, dshd);

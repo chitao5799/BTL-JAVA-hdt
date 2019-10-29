@@ -5,13 +5,7 @@
  */
 package BTL;
 
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.FileOutputStream;
-//import java.io.IOException;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-//import java.util.ArrayList;
+
 import java.util.Scanner;
 
 /**
@@ -19,7 +13,7 @@ import java.util.Scanner;
  * @author NCT99
  */
 public class DSSP extends DocGhiFile<SanPham>{
-    //ArrayList<SanPham> listDT =new ArrayList<>();
+    
     
     public void nhapDSSP(){
         int sl;
@@ -95,7 +89,7 @@ public class DSSP extends DocGhiFile<SanPham>{
         System.out.print("\n Nhập mã của  sản phẩm muốn sửa:");
         maTim=sc.nextLine();        
         for (SanPham x : listDT) {
-            if(maTim.equals(x.getMaSP()))//if(x.maNV==maTim)
+            if(maTim.equals(x.getMaSP()))
             {
                 index=listDT.indexOf(x);
                 break;
@@ -120,7 +114,7 @@ public class DSSP extends DocGhiFile<SanPham>{
                     System.out.print("\n nhập số lượng mới cho sản phẩm \""+temp.getTenSP()+"\":");
                     sl=sc.nextInt();
                     sc.nextLine();
-                    temp.setSoLuong(sl);//=;
+                    temp.setSoLuong(sl);
                     listDT.set(index, temp);
                 };break;
                 case 2:{
@@ -128,7 +122,7 @@ public class DSSP extends DocGhiFile<SanPham>{
                     System.out.print("\n nhập đơn giá bán mới cho sản phẩm \""+temp.getTenSP()+"\":");
                     dgb=sc.nextDouble();
                     sc.nextLine();
-                    temp.setDonGiaBan(dgb);//=dgb;
+                    temp.setDonGiaBan(dgb);
                     listDT.set(index, temp);
                 };break;
                 case 3:{
@@ -145,7 +139,7 @@ public class DSSP extends DocGhiFile<SanPham>{
                     System.out.print("\n nhập chất liệu vải mới cho sản phẩm \""+temp.getTenSP()+"\":");
                     clv=sc.nextLine();
                     //sc.nextLine();
-                    temp.setChatLieuVai(clv);//=clv;
+                    temp.setChatLieuVai(clv);
                     listDT.set(index, temp);
                 };break;
                 default:System.out.println("bạn đã không lựa chọn mục để sửa nên thông "
@@ -153,23 +147,7 @@ public class DSSP extends DocGhiFile<SanPham>{
             } 
         } 
     }
-//    public void ghiFile(String filename) throws FileNotFoundException, IOException{
-////          
-//            
-//             FileOutputStream fout = new FileOutputStream(filename);
-//            ObjectOutputStream out =new ObjectOutputStream(fout);
-//            out.writeObject(listDT);
-//            out.close();
-//            fout.close();
-//        
-//        }
-//    public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-//            FileInputStream fin =new FileInputStream(filename);
-//            ObjectInputStream obin =new ObjectInputStream(fin);
-//            listDT=(ArrayList)obin.readObject();
-//            obin.close();fin.close();
-//            
-//        }
+
 
     public int countElement() {
         return listDT.size();

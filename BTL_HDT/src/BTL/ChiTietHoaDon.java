@@ -83,7 +83,7 @@ public class ChiTietHoaDon  implements Serializable
                 System.out.print("\n!!! Wrong.Trong danh sách hóa đơn không có mã này.!!!");
         }while(coHD!=1);
         int coSP=-1;
-       // SanPham temp=new SanPham();
+       
         do {            
             System.out.print("\n Nhập mã sản phẩm:");
             maSP=sc.nextLine();

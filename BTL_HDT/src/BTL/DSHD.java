@@ -5,14 +5,7 @@
  */
 package BTL;
 
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.FileOutputStream;
-//import java.io.IOException;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-////import java.io.Serializable;
-//import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.Scanner;
 
@@ -103,24 +96,7 @@ public class DSHD extends DocGhiFile<HoaDonBan>{
             listDT.add(hdb);
     }
     
-//    public void ghiFile(String filename) throws FileNotFoundException, IOException{
-////          
-//            
-//             FileOutputStream fout = new FileOutputStream(filename);
-//            ObjectOutputStream out =new ObjectOutputStream(fout);
-//            out.writeObject(listDT);
-//            out.close();
-//            fout.close();
-//        
-//        }
-//        public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-//            
-//            FileInputStream fin =new FileInputStream(filename);             
-//            ObjectInputStream obin =new ObjectInputStream(fin);             
-//            listDT=(ArrayList)obin.readObject();             
-//            obin.close();fin.close();
-//            
-//        }
+
 
     public int countElement() {
         return listDT.size();

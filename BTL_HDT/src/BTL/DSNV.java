@@ -5,14 +5,6 @@
  */
 package BTL;
 
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.FileOutputStream;
-//import java.io.IOException;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-//import java.util.ArrayList;
-//import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -21,20 +13,20 @@ import java.util.Scanner;
  * @author NCT99
  */
 public class DSNV extends DocGhiFile<NHANVIEN>{
-   // ArrayList<NHANVIEN> listDT=new ArrayList<>();
+   
     Scanner sc=new Scanner(System.in);
     public void nhap(){
         int i,soluong;
         
         System.out.print("\nnhập số lượng nhân viên:");
         soluong=sc.nextInt();
-        //listDT;
+        
         for(i=0;i<soluong;i++)
         {           
             NHANVIEN xNhanvien=new NHANVIEN();
             NHANVIEN temp=new NHANVIEN();                                              
             xNhanvien.nhap();
-                //do{               
+                            
                 for ( int j=0;j<listDT.size();j++) {                    
                      temp=listDT.get(j);
                     if(xNhanvien.getMaNV().equals(temp.getMaNV()))//==temp.maNV
@@ -49,7 +41,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
                         j=-1;
                     }
                 }                
-         //   }while(xNhanvien.maNV.equals(temp.maNV));          
+               
             listDT.add(xNhanvien);           
         }                   
     }
@@ -110,7 +102,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
         maTim=sc.nextLine();
         
         for (NHANVIEN x : listDT) {
-            if(maTim.equals(x.getMaNV()))//if(x.maNV==maTim)
+            if(maTim.equals(x.getMaNV()))
             {
                 indexs=listDT.indexOf(x);               
                 return indexs;
@@ -119,19 +111,7 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
         return -1;
     }
     public void xoa1NV(){
-         //sc.nextLine();
-//        String maXoa="";
-//        int indexs = 0;
-//        System.out.print("\n nhập mã cho nhân viên muốn xóa:");
-//        maXoa=sc.nextLine();
-//        
-//        for (NHANVIEN x : listDT) {
-//            if(maXoa.equals(x.maNV))//if(x.maNV==maXoa)
-//            {
-//                indexs=listDT.indexOf(x);
-//                break;
-//            }
-//        }
+
         int x=TimViTriTheoMa();
         if(x==-1)
             System.out.print("\ntrong danh sách không có nhân viên muốn xóa.");
@@ -202,22 +182,6 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
     public void SortByYear(){
         Collections.sort(listDT, new NgaySinhComparator());
     }
-//    public void ghiFile(String filename) throws FileNotFoundException, IOException{
-////          
-//             FileOutputStream fout = new FileOutputStream(filename);
-//            ObjectOutputStream out =new ObjectOutputStream(fout);
-//            out.writeObject(listDT);
-//            out.close();
-//           fout.close();
-//        }
-//        public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-//            FileInputStream fin =new FileInputStream(filename);
-//            ObjectInputStream obin =new ObjectInputStream(fin);           
-//            listDT=(ArrayList)obin.readObject();
-//            obin.close();fin.close();
-//            
-//        }
-           // super.
 
     
     public int countElement() {

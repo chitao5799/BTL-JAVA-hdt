@@ -7,15 +7,15 @@ package BTL;
 
 import java.io.Serializable;
 import java.util.Scanner;
-//import java.util.logging.Logger;
+
 
 /**
  *
  * @author NCT99
  */
 public class KHACHHANG extends PerSon implements Serializable{
-    private String maKH;//,tenKH, diaChi;
-  //  private long dt;
+    private String maKH;
+
 
     public KHACHHANG() {
     }

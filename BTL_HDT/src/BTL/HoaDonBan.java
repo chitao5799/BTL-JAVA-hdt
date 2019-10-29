@@ -112,34 +112,13 @@ public class HoaDonBan implements Serializable{
                 System.out.print("\n!!!!Bạn đã nhập ngày tháng sai !!!!."); 
             }while( day.split("/").length!=3);         
             arrday=day.split("/");
-//         if(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1)
-//             System.out.print("\n !!!!!! ngày tháng không chính xác. !!!!!! ");
-//        else if(Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12)
-//                System.out.print("\n  !!!!!! ngày tháng không chính xác. !!!!!! ");
-//        else if(Integer.valueOf(arrday[2])<=0)
-//             System.out.print("\n !!!!!!  ngày tháng không chính xác. !!!!!! ");    
-            // *
+
             NgayThangNam=NgayHopLe(Integer.valueOf(arrday[0]), Integer.valueOf(arrday[1]), Integer.valueOf(arrday[2]));
-           //  *  //
-//             int[] ngayTrongThang = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-//            if(Integer.valueOf(arrday[1]) <= 0 || Integer.valueOf(arrday[1]) > 12)
-//              NgayThangNam= -1;
-//            else {
-//                  if((((Integer.valueOf(arrday[2]) % 4 == 0) && (Integer.valueOf(arrday[2]) % 100 != 0)) || (Integer.valueOf(arrday[2]) % 400 == 0)))
-//                    ngayTrongThang[1]++;
-//                  if(Integer.valueOf(arrday[2])<=0)
-//                       NgayThangNam= -1;
-//                  else  if((Integer.valueOf(arrday[0]) > 0 && Integer.valueOf(arrday[0]) <= ngayTrongThang[Integer.valueOf(arrday[1]) - 1]))
-//                       NgayThangNam=1;
-//                        else NgayThangNam=-1;
-//            }
-            //  * //
+       
             if(NgayThangNam==false)
                 System.out.print("\n  !!!!!! ngày tháng năm không chính xác. !!!!!! ");
         }while(NgayThangNam==false);
-//        while(Integer.valueOf(arrday[0])>31||Integer.valueOf(arrday[0])<1||
-//                Integer.valueOf(arrday[1])<1||Integer.valueOf(arrday[1])>12||
-//                Integer.valueOf(arrday[2])<=0 ); 
+
         ngayBan=new Date(Integer.valueOf(arrday[2]),Integer.valueOf(arrday[1]),
                 Integer.valueOf(arrday[0]));
     }
@@ -167,40 +146,5 @@ public class HoaDonBan implements Serializable{
                 (ngayBan.getMonth()==0)?12:ngayBan.getMonth(),
                 (ngayBan.getMonth()==0)?ngayBan.getYear()-1:ngayBan.getYear());
     }
-//    public double TinhTongTien(DSChiTietHD dscthd){//,DSHD dshd
-//        Scanner sc =new Scanner(System.in);
-//        String mahd;
-//        System.out.print("\n Nhập mã hóa đơn muốn tính tổng tiền.");
-//        mahd=sc.nextLine(); //lưu trữ mã hóa đơn muốn tìm
-//        boolean coHD=false;
-//        for (HoaDonBan x : dshd.listDT) {
-//            if(mahd.equals(x.getMaHD()))
-//            {
-//                coHD=true;
-//                break;
-//            }
-//        }
-//        if(!coHD){
-//            System.out.print("\n!!!!Trong danh sách hóa đơn không có hóa đơn bạn cần.!!!");
-//            return;
-//        }
-//        coHD=false; //xét lại có hóa đơn là false để kiểm tra xem trong danh sách 
-        //chi tiết hóa đơn có bản ghi của hóa đơn này không.
-           
-//            double sums=0.0;
-//        for (ChiTietHoaDon col : dscthd.listDT) {
-//            if(this.maHD.equals(col.getMaHD()))
-//            {
-//                sums+=col.ThanhTien();
-//               // coHD=true;
-//            }
-//           
-//        }
-////        if (!coHD){ 
-////            System.out.print("\n!!!Mã hóa đơn \""+mahd+"\" chưa có bản ghi nào trong chi tiết hóa đơn, nên hóa đơn này không có tổng tiền.!!!!");
-////        }
-////        else
-////            System.out.printf("\n Tổng tiền của mã hóa đơn %s là:%.2f",mahd,sums);
-//        return sums;
-//    }
+
 }

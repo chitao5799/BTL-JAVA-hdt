@@ -5,15 +5,7 @@
  */
 package BTL;
 
-//import java.io.File;
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.FileOutputStream;
-//import java.io.IOException;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-////import java.io.Serializable;
-//import java.util.ArrayList;
+
 import java.util.Scanner;
 
 /**
@@ -21,7 +13,7 @@ import java.util.Scanner;
  * @author NCT99
  */
 public class DSKH extends DocGhiFile<KHACHHANG>{//implements Serializable
-   // ArrayList<KHACHHANG> listDT=new ArrayList<>();
+   
     public void NhapDSKH(){
         int i,n;
         Scanner sc =new Scanner(System.in);
@@ -56,23 +48,7 @@ public class DSKH extends DocGhiFile<KHACHHANG>{//implements Serializable
                 x.xuat();
             }
         }
-//        public void ghiFile(String filename) throws FileNotFoundException, IOException{
-////          
-//            
-//             FileOutputStream fout = new FileOutputStream(filename);
-//            ObjectOutputStream out =new ObjectOutputStream(fout);
-//            out.writeObject(listDT);
-//            out.close();
-//            fout.close();
-//        
-//        }
-//        public void docfile(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-//            FileInputStream fin =new FileInputStream(filename);
-//            ObjectInputStream obin =new ObjectInputStream(fin);
-//            listDT=(ArrayList)obin.readObject();
-//            obin.close();fin.close();
-//           
-//        }
+
         public int countElement(){
             return listDT.size();
         }
