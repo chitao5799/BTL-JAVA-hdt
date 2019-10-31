@@ -16,10 +16,22 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
    
     Scanner sc=new Scanner(System.in);
     public void nhap(){
-        int i,soluong;
-        
-        System.out.print("\nnhập số lượng nhân viên:");
-        soluong=sc.nextInt();
+        int i,soluong=-1;
+
+        do{
+          System.out.print("\nnhập số lượng nhân viên:");
+            
+            try {
+                soluong=sc.nextInt();
+                sc.nextLine();
+                if(soluong <= 0)
+                System.out.print("\n !!!!!! SỐ LƯỢNG PHẢI LỚN HƠN 0. !!!!!! ");
+                
+            } catch (Exception e) {                
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                sc.nextLine();
+            }
+        }while (soluong <=  0); 
         
         for(i=0;i<soluong;i++)
         {           
@@ -130,8 +142,14 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
              //sc.nextLine();
             int luachon=-1;
             System.out.print("\nvui lòng nhập lựa chọn:");
-            luachon=sc.nextInt();
-           sc.nextLine();
+
+           try {
+                luachon=sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                System.out.print("\n!!!Lỗi: "+e.toString());
+                return;
+            }
             switch(luachon)
             {
                 case 1:{
@@ -149,20 +167,39 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
                     listDT.set(index, temp);
                 };break;
                 case 3:{
-                    long dienthoai;
+                    long dienthoai=0;
                     System.out.print("\n nhập số điện thoại mới cho nhân viên \""+temp.getHoTen()+"\":");
-                    dienthoai=sc.nextLong();
-                    sc.nextLine();
+                    try {    
+                        dienthoai=sc.nextLong();
+                        sc.nextLine();
+                       } catch (Exception e) {
+                           System.out.print("\n!!!Lỗi :"+e);
+                       }
+
                     temp.setDienThoai(dienthoai);//=dienthoai;
                     listDT.set(index, temp);
                     
                 };break;
                 case 4:{
-                    int hsl;
-                    System.out.print("\n nhập hệ sô lương mới cho nhân viên \""+temp.getHoTen()+"\":");
-                    hsl=sc.nextInt();
-                    sc.nextLine();
-                    temp.setHeSoLuong(hsl);//=l;
+                    int hsl=0;
+                    do{
+                        System.out.print("\n nhập hệ sô lương mới cho nhân viên \""+temp.getHoTen()+"\":");
+                       try {
+                           hsl=sc.nextInt();
+                            sc.nextLine();
+                           if (hsl<=0) {
+                           System.out.print("\n !!!hệ số lương phải lớn hơn 0.!!!");
+                           }
+                       } catch (Exception e) {                
+                           System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                           sc.nextLine();
+                       }     
+
+                   }while(hsl<=0);
+                  
+                    temp.setHeSoLuong(hsl);//=l; 
+                    //System.out.print("\n luong co ban:"+NHANVIEN.getLuongCoBan());
+                    temp.setLuong(NHANVIEN.getLuongCoBan()*hsl);
                     listDT.set(index, temp);
                 };break;
                 default:System.out.println("bạn đã không lựa chọn mục để sửa nên thông "
@@ -183,7 +220,9 @@ public class DSNV extends DocGhiFile<NHANVIEN>{
         Collections.sort(listDT, new NgaySinhComparator());
     }
 
-    
+    public void sortByNameNSLuong(){
+        Collections.sort(listDT,new NameNgaysinhLuong());
+    }
     public int countElement() {
         return listDT.size();
     }

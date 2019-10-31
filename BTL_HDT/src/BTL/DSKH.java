@@ -15,11 +15,27 @@ import java.util.Scanner;
 public class DSKH extends DocGhiFile<KHACHHANG>{//implements Serializable
    
     public void NhapDSKH(){
-        int i,n;
+        int i,n=-1;
         Scanner sc =new Scanner(System.in);
-        System.out.print("\n nhập số lượng khách hàng:");
-        n=sc.nextInt();
+        
+        
        // listDT;
+         do{
+           System.out.print("\n nhập số lượng khách hàng:");
+            
+            try {
+                n=sc.nextInt();
+                sc.nextLine();
+                if(n <= 0)
+                System.out.print("\n !!!!!! SỐ LƯỢNG PHẢI LỚN HƠN 0. !!!!!! ");
+                
+            } catch (Exception e) {                
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                sc.nextLine();
+            }
+        }while (n <=  0); 
+        
+        
         for(i=0;i<n;i++){
             KHACHHANG khachhang=new KHACHHANG();
             khachhang.nhap();

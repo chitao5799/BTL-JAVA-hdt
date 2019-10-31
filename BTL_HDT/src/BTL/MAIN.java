@@ -27,11 +27,20 @@ public class MAIN {
         DSHD listHDdocfile=new DSHD();
         DSSP listSPdocfile=new DSSP();
         DSChiTietHD listCTHDdocfile=new DSChiTietHD();
-        int LuaChonChinh=-1;
-        do{            
+       
+        int LuaChonChinh;
+        do{           
+            LuaChonChinh=-1;
             menu();
             System.out.print("\n Mời bạn nhập lựa chọn:");
-            LuaChonChinh=sc.nextInt();
+            
+            try {
+                LuaChonChinh=sc.nextInt();                
+                sc.nextLine();
+            } catch (Exception e) {                
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                sc.nextLine();
+            }
             switch(LuaChonChinh){
                 case 1:XuLyNhanVien(listNVdocfile);break;
                 case 2: XuLyKhachHang(listKHdocfile);break;
@@ -53,7 +62,13 @@ public class MAIN {
         do{            
             menuNV();
             System.out.print("\n Mời bạn nhập lựa chọn:");
-            LuaChonNhanVien=sc.nextInt();           
+            try {
+                LuaChonNhanVien=sc.nextInt();                
+ 
+            } catch (Exception e) {
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");              
+                return;
+            }
             switch(LuaChonNhanVien){
                 case 1:{
                     listnv.nhap();
@@ -225,6 +240,18 @@ public class MAIN {
                             }
                     }
                 };break;
+                case 14: {
+                    sc.nextLine();
+                    if(listNVdocfile.listDT.isEmpty())
+                    { 
+                        System.out.print("\n !!!!!! file nhân viên chưa được đọc hoặc đọc nhần file hoặc file rỗng.");
+                        sc.nextLine();sc.nextLine();
+                    }else {
+                    System.out.print("\nDanh sách nhân viên sau khi được sắp xếp theo ngày sinh.\n");
+                    listNVdocfile.sortByNameNSLuong(); 
+                    listNVdocfile.xuat();
+                    }
+                };break;
                 default: break;
             }
         }while (LuaChonNhanVien!=0);
@@ -236,7 +263,14 @@ public class MAIN {
         do{            
             menuKH();
             System.out.print("\n Mời bạn nhập lựa chọn:");
-            LuaChonKhachHang=sc.nextInt();           
+           
+            try {
+                 LuaChonKhachHang=sc.nextInt();                
+ 
+            } catch (Exception e) {
+                System.out.print("\n!!!Lỗi: "+e.toString());              
+                return;
+            }
             switch(LuaChonKhachHang){
                 case 1:{
                     listDT.NhapDSKH();
@@ -280,7 +314,14 @@ public class MAIN {
         do{            
             menuSP();
             System.out.print("\n Mời bạn nhập lựa chọn:");
-            LuaChonSanPham=sc.nextInt();           
+            
+            try {
+                LuaChonSanPham=sc.nextInt();                
+ 
+            } catch (Exception e) {
+                System.out.print("\n!!!Lỗi: "+e.toString());              
+                return;
+            }
             switch(LuaChonSanPham){
                 case 1:{
                     listsp.nhapDSSP();
@@ -390,7 +431,14 @@ public class MAIN {
         do{            
             menuHD();
             System.out.print("\n Mời bạn nhập lựa chọn:");
-            LuaChonHoaDon=sc.nextInt();           
+            
+            try {
+                LuaChonHoaDon=sc.nextInt();                
+ 
+            } catch (Exception e) {
+                System.out.print("\n!!!Lỗi: "+e.toString());              
+                return;
+            }
             switch(LuaChonHoaDon){
                 case 1:{
                     if(listKHdocfile.listDT.isEmpty()){
@@ -485,7 +533,14 @@ public class MAIN {
         do{            
             menuCTHD();
             System.out.print("\n Mời bạn nhập lựa chọn:");
-            LuaChonCTHoaDon=sc.nextInt();           
+            
+            try {
+                LuaChonCTHoaDon=sc.nextInt();                
+ 
+            } catch (Exception e) {
+                System.out.print("\n!!!Lỗi: "+e.toString());              
+                return;
+            }
             switch(LuaChonCTHoaDon){
                 case 1:{
                     if(listHDdocfile.listDT.isEmpty()){
@@ -681,6 +736,7 @@ public class MAIN {
         System.out.printf("\n%20s\t%-54s%c","|","11.Sắp xếp theo ngày sinh Nhân Viên.",'|');
         System.out.printf("\n%20s\t%-54s%c","|","12.Tìm Nhân Viên theo tên.",'|');
         System.out.printf("\n%20s\t%-54s%c","|","13.Xóa 1 Nhân Viên theo mã.",'|');
+        System.out.printf("\n%20s\t%-54s%c","|","14.Sắp xếp theo tên, ngày sinh, lương.",'|');
         System.out.printf("\n%20s\t%-54s%c","|","0.Thoát.",'|');
         System.out.printf("\n%19s"," ");
         for (int i = 0; i < 60; i++) {

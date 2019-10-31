@@ -16,11 +16,23 @@ public class DSSP extends DocGhiFile<SanPham>{
     
     
     public void nhapDSSP(){
-        int sl;
-        
+        int sl=-1;  
         Scanner sc =new Scanner(System.in);
-        System.out.println("\n nhập số lượng các sản phẩm:");
-        sl=sc.nextInt();
+
+        do{
+           System.out.println("\n nhập số lượng các sản phẩm:");
+            
+            try {
+                sl=sc.nextInt();
+                sc.nextLine();
+                if(sl <= 0)
+                System.out.print("\n !!!!!! SỐ LƯỢNG PHẢI LỚN HƠN 0. !!!!!! ");
+                
+            } catch (Exception e) {                
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                sc.nextLine();
+            }
+        }while (sl <=  0); 
         
         for (int i = 0; i < sl; i++) {
             SanPham sp =new SanPham();
@@ -105,31 +117,72 @@ public class DSSP extends DocGhiFile<SanPham>{
              //sc.nextLine();
             int luachon=-1;
             System.out.print("\nvui lòng nhập lựa chọn:");
-            luachon=sc.nextInt();
-           sc.nextLine();
+            try {
+                luachon=sc.nextInt();
+                sc.nextLine();
+            } catch (Exception e) {
+                System.out.print("\n!!!Lỗi: "+e.toString());
+                return;
+            }
+            
+           
             switch(luachon)
             {
                 case 1:{
-                    int sl;//số lượng
-                    System.out.print("\n nhập số lượng mới cho sản phẩm \""+temp.getTenSP()+"\":");
-                    sl=sc.nextInt();
-                    sc.nextLine();
+                    int sl=-1;//số lượng
+                    do{
+                        
+                        System.out.print("\n nhập số lượng mới cho sản phẩm \""+temp.getTenSP()+"\":");
+                        try {
+                            sl=sc.nextInt();
+                            sc.nextLine();
+                            if(sl <= 0)
+                            System.out.print("\n !!!!!! SỐ LƯỢNG PHẢI LỚN HƠN 0. !!!!!! ");
+
+                        } catch (Exception e) {                
+                            System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                            sc.nextLine();
+                        }
+                    }while (sl<=  0);          
                     temp.setSoLuong(sl);
                     listDT.set(index, temp);
                 };break;
                 case 2:{
-                    double dgb;//đơn giá bán
-                    System.out.print("\n nhập đơn giá bán mới cho sản phẩm \""+temp.getTenSP()+"\":");
-                    dgb=sc.nextDouble();
-                    sc.nextLine();
+                    double dgb=-1;//đơn giá bán
+                     do{
+                        System.out.print("\n nhập đơn giá bán mới cho sản phẩm \""+temp.getTenSP()+"\":");
+                        try {
+                            dgb=sc.nextDouble();
+                            sc.nextLine();
+                            if(dgb < temp.getDonGiaNhap() )
+                                System.out.print("\n !!!!!! ĐƠN GIÁ BÁN PHẢI LỚN HƠN ĐƠN GIÁ NHẬP !!!!!! ");
+                        } catch (Exception e) {                
+                            System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số thực.");                                      
+                            sc.nextLine();
+                        }
+
+                    }while(dgb < temp.getDonGiaNhap() );
+                    
                     temp.setDonGiaBan(dgb);
                     listDT.set(index, temp);
                 };break;
                 case 3:{
-                    int kt;//kích thước
-                    System.out.print("\n nhập size mới cho sản phẩm \""+temp.getTenSP()+"\":");
-                    kt=sc.nextInt();
-                    sc.nextLine();
+                    int kt=-1;//kích thước
+                    do{
+                        System.out.print("\n nhập size mới cho sản phẩm \""+temp.getTenSP()+"\":");
+                        
+                        try {;
+                            kt=sc.nextInt();
+                            sc.nextLine();
+                            if(kt <= 0)
+                            System.out.print("\n !!!!!!  KÍCH CỠ PHẢI LỚN HƠN 0. !!!!!! ");
+                        } catch (Exception e) {                
+                            System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                            sc.nextLine();
+                        }
+
+                    }while (kt<=  0); 
+                    
                     temp.setSize(kt);//=kt;
                     listDT.set(index, temp);
                     

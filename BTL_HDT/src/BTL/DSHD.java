@@ -16,10 +16,24 @@ import java.util.Scanner;
 public class DSHD extends DocGhiFile<HoaDonBan>{
     //ArrayList<HoaDonBan> listDT =new ArrayList<>();
     public void nhapDSHD(DSKH dskh,DSNV dsnv){
-        int i,soLuong;
+        int i,soLuong=-1;
         Scanner sc =new Scanner(System.in);
-        System.out.print("\n nhập số lượng hóa đơn:");
-        soLuong=sc.nextInt();
+
+        do{
+           System.out.print("\n nhập số lượng hóa đơn:");
+            
+            try {
+                soLuong=sc.nextInt();
+                sc.nextLine();
+                if(soLuong <= 0)
+                System.out.print("\n !!!!!! SỐ LƯỢNG PHẢI LỚN HƠN 0. !!!!!! ");
+                
+            } catch (Exception e) {                
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                sc.nextLine();
+            }
+        }while (soLuong <=  0); 
+        
         for ( i = 0; i < soLuong; i++) {
             HoaDonBan hdb=new HoaDonBan();
             hdb.nhapHoaDon(dsnv,dskh);

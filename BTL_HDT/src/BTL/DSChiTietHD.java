@@ -14,10 +14,25 @@ import java.util.Scanner;
 public class DSChiTietHD extends DocGhiFile<ChiTietHoaDon>{
   
     public void nhap(DSHD dshd,DSSP dssp){
-        int soLuongHD;
+        int soLuongHD=-1;
         Scanner sc =new Scanner(System.in);
-        System.out.print("\n Nhập số lượng chi tiết hóa đơn.");
-        soLuongHD=sc.nextInt();
+        
+        
+         do{
+           System.out.print("\n Nhập số lượng chi tiết hóa đơn.");
+            
+            try {
+                soLuongHD=sc.nextInt();
+                sc.nextLine();
+                if(soLuongHD <= 0)
+                System.out.print("\n !!!!!! SỐ LƯỢNG PHẢI LỚN HƠN 0. !!!!!! ");
+                
+            } catch (Exception e) {                
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                sc.nextLine();
+            }
+        }while (soLuongHD <=  0); 
+        
         for (int i = 0; i < soLuongHD; i++) {
             ChiTietHoaDon cthd=new ChiTietHoaDon();
             cthd.nhapCTHD(dssp, dshd);

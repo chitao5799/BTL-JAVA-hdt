@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Scanner;
+//import java.util.function.ToIntFunction;
 
 
 /**
@@ -19,16 +20,18 @@ import java.util.Scanner;
  */
 public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializable{
     private String maNV,chucVu;   
-    private static float luongCoBan;
+    private static float luongCoBan=1100.0f;
     private int heSoLuong;
     private Date ngaySinh;
     private float luong;
     public NHANVIEN() {
         super();
-        luongCoBan =1100.0f;
+        //luongCoBan=;
       
     }
-    
+    public NHANVIEN(float lcb){
+        luongCoBan=lcb;
+    }
 
 
     public NHANVIEN(String maNV, String chucVu, int heSoLuong, Date ngaySinh) {
@@ -109,12 +112,18 @@ public class NHANVIEN extends PerSon implements Comparable<NHANVIEN>,Serializabl
         chucVu=sc.nextLine();
 
         do{
-                 System.out.print("\n Nhập hệ số lương nhân viên:");
-                 heSoLuong=sc.nextInt();
-           
-            if (heSoLuong<=0) {
+                 System.out.print("\n Nhập hệ số lương nhân viên:");    
+            try {
+                heSoLuong=sc.nextInt();                
+                sc.nextLine();
+                if (heSoLuong<=0) {
                 System.out.print("\n !!!hệ số lương phải lớn hơn 0.!!!");
-            }
+                }
+            } catch (Exception e) {                
+                System.out.print("\n!!!Lỗi: "+e.toString()+" ; phải nhập số nguyên.");                                      
+                sc.nextLine();
+            }     
+            
         }while(heSoLuong<=0);
         luong=luongCoBan*heSoLuong;
         sc.nextLine();
@@ -259,4 +268,35 @@ class NameComparator implements Comparator<NHANVIEN> {
                 String[] ten2=s2.getHoTen().split(" ");
 		return ten1[ten1.length-1].compareTo(ten2[ten2.length-1]);
 	}
+}
+class NameNgaysinhLuong implements Comparator<NHANVIEN>{
+    @Override
+    public int compare(NHANVIEN nv1,NHANVIEN nv2){
+         String[] ten1=nv1.getHoTen().split(" ");
+         String[] ten2=nv2.getHoTen().split(" ");
+        int value1= ten1[ten1.length-1].compareTo(ten2[ten2.length-1]);
+        if(value1==0)
+        {
+            int value2=nv1.getNgaySinh().compareTo(nv2.getNgaySinh());
+            if(value2==0)
+            {
+                if (nv1.getLuong() == nv2.getLuong())
+			return 0;
+		else if (nv1.getLuong() > nv2.getLuong())
+			return 1;
+		else
+			return -1;
+            }
+            else return value2;
+        }
+        return value1;
+    }
+//    @Override
+//    public Comparator<NHANVIEN> thenComparing(Comparator<? super NHANVIEN> ngaySinh){
+//        return Comparator.super.thenComparing(ngaySinh);
+//    }
+//    @Override
+//    public Comparator<NHANVIEN> thenComparingInt(ToIntFunction<? super NHANVIEN> luong){
+//        return Comparator.super.thenComparingInt(luong);
+//    }
 }

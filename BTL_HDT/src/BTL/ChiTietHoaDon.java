@@ -5,6 +5,7 @@
  */
 package BTL;
 
+import com.sun.javafx.font.FontResource;
 import java.io.Serializable;
 import java.util.Scanner;
 //import javafx.scene.control.SpinnerValueFactory;
@@ -109,11 +110,19 @@ public class ChiTietHoaDon  implements Serializable
         } while (coSP!=1);
         do {            
             System.out.print("\n Nhập số lượng mua sản phẩm này:");
-            soLuong=sc.nextInt();
-            if(soLuong<=0)
-                System.out.print("\n!!!Wrong. số lượng phải lớn hơn không.!!!");
-            if(temp.getSoLuong()<soLuong)
-                System.out.print("\n!!!Số lượng nhập vào lớn hơn số lượng hiện có của sản phẩm trong danh sách.!!");
+            try {
+                soLuong=sc.nextInt();
+                if(soLuong<=0)
+                    System.out.print("\n!!!Wrong. số lượng phải lớn hơn không.!!!");
+                if(temp.getSoLuong()<soLuong)
+                    System.out.print("\n!!!Số lượng nhập vào lớn hơn số lượng hiện có của sản phẩm trong danh sách.!!");
+            
+                sc.nextLine();
+            } catch (Exception e) {
+                System.out.print("\n!!Lỗi:"+e+" ; nhập vào số nguyên.");
+                sc.nextLine();
+            }
+
             
         } while (soLuong<=0 || temp.getSoLuong()<soLuong);
         //cập nhật lại số lượng cho sản phẩm đang nhập này.
@@ -121,9 +130,16 @@ public class ChiTietHoaDon  implements Serializable
         
         do {            
             System.out.print("\n Nhập giảm giá (0 -> 100)%:");
-            giamGia=sc.nextFloat();
+            try {
+                giamGia=sc.nextFloat();
+            
             if(giamGia<0 ||giamGia>100)
                 System.out.print("\n!!Wrong. nhập mức giảm giá sai.!!!");
+            sc.nextLine();
+            } catch (Exception e) {
+                System.out.print("\n!!Lỗi:"+e+" ; nhập vào số nguyên.");
+                sc.nextLine();
+            }
         } while (giamGia<0 ||giamGia>100);
     }
     public void xuat(){
