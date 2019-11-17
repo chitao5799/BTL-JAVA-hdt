@@ -45,7 +45,8 @@ public class DocGhiFile <T>{
             FileInputStream fin =new FileInputStream(filename);
             ObjectInputStream obin =new ObjectInputStream(fin);           
             listDT=(ArrayList)obin.readObject();
-            obin.close();//fin.close();
+            obin.close();//
+            fin.close();
             }catch(Exception e){
                 
                 System.out.print("\n!!!Lỗi :"+e);
