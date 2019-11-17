@@ -43,7 +43,7 @@ public class MAIN {
             }
             switch(LuaChonChinh){
                 case 1:XuLyNhanVien(listNVdocfile);break;
-                case 2: XuLyKhachHang(listKHdocfile);break;
+                case 2: XuLyKhachHang(listKHdocfile,listHDdocfile,listSPdocfile,listCTHDdocfile);break;
                 case 3: XuLySanPham(listSPdocfile);break;
                 case 4:XuLyHoaDon(listNVdocfile, listKHdocfile, listHDdocfile,listCTHDdocfile);break;
                 case 5: XuLyChiTietHoaDon(listCTHDdocfile, listHDdocfile, listSPdocfile);break;
@@ -256,7 +256,8 @@ public class MAIN {
             }
         }while (LuaChonNhanVien!=0);
     }
-    static void XuLyKhachHang(DSKH listKHdocfile) throws IOException, FileNotFoundException, ClassNotFoundException{
+    static void XuLyKhachHang(DSKH listKHdocfile,DSHD listHDdocfile, DSSP listSPdocfile, DSChiTietHD listCTHDdocfile)
+            throws IOException, FileNotFoundException, ClassNotFoundException{
         Scanner sc =new Scanner(System.in);
         int LuaChonKhachHang=-1;
         DSKH listDT= new DSKH();
@@ -302,7 +303,11 @@ public class MAIN {
                     }
                     listKHdocfile.docfile(filename);   
                     listKHdocfile.XuatDSKH();
-                };break;               
+                };break;
+                case 5:{
+                    listKHdocfile.XemThongTinHD_DaMua(listHDdocfile, listCTHDdocfile, listSPdocfile);
+                };break;
+                       
                 default: break;
             }
         }while (LuaChonKhachHang!=0);
@@ -757,6 +762,7 @@ public class MAIN {
         System.out.printf("\n%20s\t%-54s%c","|","2.Xuất danh sách Khách Hàng.",'|');
         System.out.printf("\n%20s\t%-54s%c","|","3.Ghi danh sách Khách Hàng vào file.",'|');
         System.out.printf("\n%20s\t%-54s%c","|","4.Đọc danh sách Khách Hàng từ file.",'|');        
+        System.out.printf("\n%20s\t%-54s%c","|","5.Tìm các hóa đơn của khách hàng đã mua.",'|');        
         System.out.printf("\n%20s\t%-54s%c","|","0.Thoát.",'|');
         System.out.printf("\n%19s"," ");
         for (int i = 0; i < 60; i++) {
