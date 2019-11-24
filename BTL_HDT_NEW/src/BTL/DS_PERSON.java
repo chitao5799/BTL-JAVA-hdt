@@ -335,20 +335,41 @@ public class DS_PERSON {
     public void xoa1PerSon() throws IOException{
 
         int x=TimViTriTheoMa();
+       
+        
         if(x==-1)
             System.out.print("\ntrong danh sách không có người muốn xóa.");
         else{
-            DSperson.listDT.remove(x);
+            
             if(DSperson.listDT.get(x) instanceof NHANVIEN)
-            {
-                DSnhanVien.listDT.remove(x);
+            { 
+                int indexNV=-1;
+                for (NHANVIEN itemNV : DSnhanVien.listDT) {
+                    if(DSperson.listDT.get(x).getMa().equals(itemNV.getMa()))
+                    {  
+                        indexNV=DSnhanVien.getListDT().indexOf(itemNV);
+                        break;
+                    }
+                }
+                DSperson.listDT.remove(x);
+                DSnhanVien.listDT.remove(indexNV);
                 ghiFileNhanVien();
             }
             else if(DSperson.listDT.get(x) instanceof KHACHHANG)
             {
-                DSkhachHang.listDT.remove(x);
+                int indexKH=-1;
+                for (KHACHHANG itemKH : DSkhachHang.listDT) {
+                    if(DSperson.listDT.get(x).getMa().equals(itemKH.getMa()))
+                    {  
+                        indexKH=DSkhachHang.getListDT().indexOf(itemKH);
+                        break;
+                    }
+                }
+                DSperson.listDT.remove(x);
+                DSkhachHang.listDT.remove(indexKH);
                 ghiFileKhachHang();
             }
+            
         }
     }
     public void suaInfor() throws IOException{

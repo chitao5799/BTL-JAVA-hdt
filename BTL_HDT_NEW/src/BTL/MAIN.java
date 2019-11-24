@@ -129,11 +129,11 @@ public class MAIN {
                 };break;
                 case 14:{
                      if(listPerSonDocFile.DSnhanVien.listDT.isEmpty()){
-                        System.out.print("\n !!!Bạn chưa đọc file hoặc danh sách nhân viên trống.");sc.nextLine();
+                        System.out.print("\n !!!Bạn chưa đọc file hoặc danh sách trống.");sc.nextLine();
                         break;
                     }
                     listPerSonDocFile.xoa1PerSon();
-                    listPerSonDocFile.xuatDSNV();
+                   // listPerSonDocFile.xuatDSNV();
                     sc.nextLine();
                 };break;
                 case 15:{
