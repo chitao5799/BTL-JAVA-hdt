@@ -3,15 +3,14 @@
 
 
 ======code để xóa màn hình console output trong netbean
-'''
+'''java
 public void cls(){
         try {
             Robot pressbot = new Robot();
             pressbot.keyPress(17); // Holds CTRL key.
             pressbot.keyPress(76); // Holds L key.
             pressbot.keyRelease(17); // Releases CTRL key.
-            pressbot.keyRelease(76); // Releases L key.
-           
+            pressbot.keyRelease(76); // Releases L key. 
         } catch (AWTException ex) {
             System.out.println("LỖi" + ex.getMessage());
         }
