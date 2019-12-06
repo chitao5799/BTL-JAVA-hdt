@@ -3,7 +3,7 @@
 
 
 ======code để xóa màn hình console output trong netbean
-
+'''
 public void cls(){
         try {
             Robot pressbot = new Robot();
@@ -16,7 +16,7 @@ public void cls(){
             System.out.println("LỖi" + ex.getMessage());
         }
     }
-    
+    '''
     =======ép kiểu để dùng phương thức của 1 lớp con nào đấy trong đa hình.
     ví dụ:
     public class SP_ThoiTrang extends SANPHAM {  }
