@@ -2,7 +2,7 @@
 - có 2 forder là :BTL-HDT và BTL-HDT-NEW
 
 
-======code để xóa màn hình console output trong netbean
+** ======code để xóa màn hình console output trong netbean **
 '''java
 public void cls(){
         try {
